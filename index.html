@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Parth Vaishnav — CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Source+Sans+3:wght@300;400;500;600&amp;family=Source+Code+Pro:wght@400&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #00274C;
+    --teal: #2F65A7;
+    --teal-light: #E8EEF7;
+    --gold: #FFCB05;
+    --red: #9A3324;
+    --text: #2c2c2c;
+    --muted: #6b7280;
+    --border: #e2e8f0;
+    --sidebar-width: 230px;
+    --bg: #f9f8f5;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  #sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    background: var(--navy);
+    position: fixed;
+    top: 0; left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.15) transparent;
+  }
+
+  #sidebar::-webkit-scrollbar { width: 4px; }
+  #sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+
+  .sidebar-header {
+    padding: 32px 20px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sidebar-name {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-title {
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 16px 0;
+    flex: 1;
+  }
+
+  nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 20px;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: all 0.18s ease;
+    border-left: 3px solid transparent;
+  }
+
+  nav ul li a:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.06);
+    border-left-color: var(--teal);
+  }
+
+  nav ul li a.active {
+    color: #fff;
+    background: rgba(255,203,5,0.15);
+    border-left-color: #FFCB05;
+  }
+
+  nav ul li a .nav-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    flex-shrink: 0;
+    transition: background 0.18s;
+  }
+
+  nav ul li a.active .nav-dot,
+  nav ul li a:hover .nav-dot {
+    background: #FFCB05;
+  }
+
+  /* ── MAIN CONTENT ── */
+  #main {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    max-width: 860px;
+    padding: 0 52px 80px;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    padding: 60px 0 48px;
+    border-bottom: 2px solid var(--navy);
+    margin-bottom: 0;
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-title {
+    font-size: 16px;
+    color: var(--teal);
+    font-weight: 600;
+    margin: 8px 0 4px;
+    letter-spacing: 0.01em;
+  }
+
+  .hero-affil {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .hero-contact {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .hero-contact a {
+    color: var(--teal);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .hero-contact a:hover { color: var(--navy); }
+
+  /* ── SECTIONS ── */
+  .cv-section {
+    padding: 52px 0 0;
+  }
+
+  .cv-section + .cv-section {
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── EDUCATION ── */
+  .edu-entry {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 24px;
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .edu-entry:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .edu-institution {
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 15px;
+  }
+
+  .edu-degree {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 14.5px;
+  }
+
+  .edu-detail {
+    color: var(--muted);
+    font-size: 13.5px;
+    font-style: italic;
+    grid-column: 1;
+  }
+
+  .edu-date {
+    color: var(--red);
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-align: right;
+    grid-row: 1;
+    grid-column: 2;
+    padding-top: 2px;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-entry {
+    margin-bottom: 32px;
+  }
+
+  .exp-org {
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 15.5px;
+    margin-bottom: 6px;
+    padding-left: 0;
+  }
+
+  .exp-role {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 4px 0;
+    border-left: 3px solid var(--teal-light);
+    padding-left: 12px;
+    margin-bottom: 3px;
+  }
+
+  .exp-role-title {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .exp-role-date {
+    font-size: 12.5px;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── PUBLICATIONS ── */
+  .pub-note {
+    background: var(--teal-light);
+    border-left: 4px solid var(--teal);
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: var(--muted);
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+
+  ol.pub-list {
+    padding-left: 0;
+    list-style: none;
+    
+  }
+
+  ol.pub-list li {
+    counter-increment: list-item -1;
+    display: grid;
+    grid-template-columns: 1fr 42px;
+    gap: 0 10px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    padding: 0 0 14px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  ol.pub-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+  ol.pub-list li:last-child { border-bottom: none; }
+
+    ol.pub-list li::before {
+    content: counter(list-item);
+    width: 26px;
+    height: 26px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'Source Code Pro', monospace;
+    position: absolute;
+    left: 0;
+    top: 2px;
+  }
+
+  ol.pub-list li a {
+    color: var(--teal);
+    text-decoration: none;
+    font-size: 12.5px;
+  }
+  ol.pub-list li a:hover { text-decoration: underline; }
+
+  .pub-journal { font-style: italic; color: var(--muted); }
+
+  /* ── OTHER PUBS / CONF / TALKS ── */
+  ol.other-list {
+    padding-left: 0;
+    list-style: none;
+    
+  }
+
+    ol.other-list li {
+    counter-increment: list-item -1;
+    display: block;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    padding: 0 0 14px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  ol.other-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+    ol.other-list li::before {
+    content: counter(list-item);
+    width: 26px;
+    height: 26px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'Source Code Pro', monospace;
+    position: absolute;
+    left: 0;
+    top: 2px;
+  }
+
+  ol.other-list li a { color: var(--teal); text-decoration: none; font-size: 12.5px; }
+  ol.other-list li a:hover { text-decoration: underline; }
+
+  /* ── WORKSHOPS ── */
+  ul.workshop-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul.workshop-list li {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  ul.workshop-list li:last-child { border-bottom: none; }
+
+  .wk-year {
+    font-weight: 700;
+    color: var(--red);
+    font-size: 13px;
+    white-space: nowrap;
+    min-width: 38px;
+    margin-top: 2px;
+  }
+
+  /* ── STUDENTS ── */
+  .student-group {
+    margin-bottom: 32px;
+  }
+
+  .student-group-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--teal);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .student-subgroup {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--muted);
+    margin: 10px 0 6px;
+  }
+
+  ol.student-list {
+    list-style: none;
+    padding: 0;
+    
+  }
+
+    ol.student-list li {
+    counter-increment: list-item -1;
+    display: block;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    padding: 0 0 14px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  ol.student-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+    ol.student-list li::before {
+    content: counter(list-item);
+    width: 26px;
+    height: 26px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'Source Code Pro', monospace;
+    position: absolute;
+    left: 0;
+    top: 2px;
+  }
+
+  .student-firstjob {
+    display: block;
+    font-size: 12.5px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 3px;
+  }
+
+  .student-firstjob + .student-firstjob {
+    margin-top: 1px;
+  }
+
+  .student-firstjob strong {
+    color: var(--teal);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── GRANTS ── */
+  .grant-entry {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .grant-entry:first-child { padding-top: 0; }
+  .grant-entry:last-child { border-bottom: none; }
+
+  .grant-title { font-weight: 600; font-size: 14px; color: var(--navy); }
+  .grant-pi { font-size: 13px; color: var(--muted); }
+  .grant-source { font-size: 13px; }
+
+  .grant-amount {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--red);
+    text-align: right;
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .grant-duration {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+    grid-column: 2;
+  }
+
+  /* ── INVITED TALKS ── */
+  ol.talks-list {
+    list-style: none;
+    padding: 0;
+    
+  }
+
+    ol.talks-list li {
+    counter-increment: list-item -1;
+    display: block;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    padding: 0 0 14px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  ol.talks-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+  ol.talks-list li:last-child { border-bottom: none; }
+
+    ol.talks-list li::before {
+    content: counter(list-item);
+    width: 26px;
+    height: 26px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'Source Code Pro', monospace;
+    position: absolute;
+    left: 0;
+    top: 2px;
+  }
+
+  /* ── AWARDS ── */
+  ul.award-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul.award-list li {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  ul.award-list li:last-child { border-bottom: none; }
+
+  .award-year {
+    font-weight: 700;
+    color: var(--red);
+    font-size: 13px;
+    white-space: nowrap;
+    min-width: 38px;
+    margin-top: 2px;
+  }
+
+  /* ── SERVICE ── */
+  .service-group {
+    margin-bottom: 28px;
+  }
+
+  .service-group-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+
+  ul.service-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul.service-list li {
+    font-size: 13.5px;
+    line-height: 1.6;
+    padding: 5px 0 5px 14px;
+    border-left: 2px solid var(--teal-light);
+    margin-bottom: 4px;
+  }
+
+  ul.service-list li a { color: var(--teal); text-decoration: none; }
+  ul.service-list li a:hover { text-decoration: underline; }
+
+  /* ── EDUCATION / COURSES ── */
+  .course-entry {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .course-entry:last-child { border-bottom: none; }
+
+  .course-name {
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .evals-table {
+    font-size: 13px;
+    color: var(--muted);
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .evals-table td {
+    padding: 2px 8px 2px 0;
+  }
+
+  .eval-score {
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  /* ── LANGUAGES ── */
+  .lang-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .lang-tag {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .lang-name { font-weight: 600; color: var(--navy); }
+  .lang-level { color: var(--muted); font-size: 12px; }
+
+  /* ── PHD COMMITTEE ── */
+  ol.committee-list {
+    list-style: none;
+    padding: 0;
+    
+  }
+
+    ol.committee-list li {
+    counter-increment: list-item -1;
+    display: block;
+    margin-bottom: 14px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    padding: 0 0 14px 40px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  ol.committee-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+    ol.committee-list li::before {
+    content: counter(list-item);
+    width: 26px;
+    height: 26px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'Source Code Pro', monospace;
+    position: absolute;
+    left: 0;
+    top: 2px;
+  }
+
+  .grad-badge {
+    display: inline-block;
+    background: var(--teal-light);
+    color: var(--teal);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 10px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ── MISC ── */
+  sup {
+    font-size: 0.7em;
+    vertical-align: super;
+    line-height: 0;
+  }
+
+  em { color: var(--muted); }
+
+  strong { font-weight: 600; }
+
+  @media (max-width: 768px) {
+    :root { --sidebar-width: 0px; }
+    #sidebar { width: 260px; transform: translateX(-260px); transition: transform 0.3s ease; }
+    #sidebar.open { transform: translateX(0); }
+    #main { margin-left: 0; padding: 0 20px 60px; }
+    .menu-btn { display: flex; }
+  }
+
+  #menu-btn {
+    display: none;
+    position: fixed;
+    top: 16px; left: 16px;
+    z-index: 200;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  @media (max-width: 768px) { #menu-btn { display: flex; } }
+
+  .pub-text {
+    grid-column: 1;
+  }
+  /* Altmetric badges */
+  .altmetric-badge-wrap {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    justify-self: center;
+    margin-top: 2px;
+  }
+  .altmetric-badge-wrap .altmetric-embed {
+    display: block !important;
+  }
+
+</style>
+</head>
+<body>
+<button id="menu-btn" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
+<aside id="sidebar">
+<div class="sidebar-header">
+<div class="sidebar-name">Parth Vaishnav</div>
+<div class="sidebar-title">Asst. Professor · U-M SEAS</div>
+</div>
+<nav>
+<ul>
+<li><a href="#hero"><span class="nav-dot"></span>About</a></li>
+<li><a href="#education"><span class="nav-dot"></span>Education</a></li>
+<li><a href="#experience"><span class="nav-dot"></span>Experience</a></li>
+<li><a href="#publications"><span class="nav-dot"></span>Journal Articles</a></li>
+<li><a href="#other-pubs"><span class="nav-dot"></span>Other Publications</a></li>
+<li><a href="#conferences"><span class="nav-dot"></span>Conference Presentations</a></li>
+<li><a href="#workshops"><span class="nav-dot"></span>Workshop Leadership</a></li>
+<li><a href="#students"><span class="nav-dot"></span>Students Advised</a></li>
+<li><a href="#phd-committee"><span class="nav-dot"></span>PhD Committee Service</a></li>
+<li><a href="#teaching"><span class="nav-dot"></span>Educational Contributions</a></li>
+<li><a href="#grants"><span class="nav-dot"></span>Grants</a></li>
+<li><a href="#talks"><span class="nav-dot"></span>Invited Talks</a></li>
+<li><a href="#awards"><span class="nav-dot"></span>Awards &amp; Honors</a></li>
+<li><a href="#service"><span class="nav-dot"></span>Service Activities</a></li>
+<li><a href="#languages"><span class="nav-dot"></span>Languages</a></li>
+</ul>
+</nav>
+</aside>
+<main id="main">
+<!-- HERO -->
+<section id="hero">
+<div class="hero-name">Parth Vaishnav</div>
+<div class="hero-title">Assistant Professor of Sustainable Systems</div>
+<div class="hero-affil">School for Environment and Sustainability, University of Michigan  ·  440 Church Street, Ann Arbor, MI 48109</div>
+<div class="hero-contact">
+<a href="/cdn-cgi/l/email-protection#52223320263a262412273f3b313a7c373627">✉ <span class="__cf_email__" data-cfemail="bfcfdecdcbd7cbc9ffcad2d6dcd791dadbca">[email&#160;protected]</span></a>
+</div>
+</section>
+<!-- EDUCATION -->
+<section class="cv-section" id="education">
+<h2 class="section-heading">Education</h2>
+<div class="edu-entry">
+<div class="edu-institution">Carnegie Mellon University, Pittsburgh, PA</div>
+<div class="edu-date">May 2015</div>
+<div class="edu-degree">PhD in Engineering and Public Policy (EPP)</div>
+<div class="edu-detail">Dissertation on reducing air pollution from international aviation and ocean shipping. Committee: Prof. M. Granger Morgan (CMU), Prof. Paul S. Fischbeck (CMU), Prof. James J. Corbett (University of Delaware), Annie Petsonk (EDF). Coursework in environmental law at Vermont Law School.</div>
+</div>
+<div class="edu-entry">
+<div class="edu-institution">University of Cambridge, United Kingdom</div>
+<div class="edu-date">Jul 2011</div>
+<div class="edu-degree">MPhil in Technology Policy</div>
+<div class="edu-detail">Assessed business models to supply energy to the rural poor. Commendation for outstanding performance.</div>
+</div>
+<div class="edu-entry">
+<div class="edu-institution">National University of Singapore &amp; Eindhoven University of Technology</div>
+<div class="edu-date">May 2005</div>
+<div class="edu-degree">Master of Technological Design</div>
+</div>
+<div class="edu-entry">
+<div class="edu-institution">National University of Singapore</div>
+<div class="edu-date">Jun 2003</div>
+<div class="edu-degree">Bachelor of Engineering (Mechanical), Minor in Bioengineering</div>
+</div>
+</section>
+<!-- EXPERIENCE -->
+<section class="cv-section" id="experience">
+<h2 class="section-heading">Experience</h2>
+<div class="exp-entry">
+<div class="exp-org">University of Michigan, Ann Arbor — School for Environment and Sustainability</div>
+<div class="exp-role"><span class="exp-role-title">Assistant Professor of Sustainable Systems</span><span class="exp-role-date">Aug 2020 – present</span></div>
+</div>
+<div class="exp-entry">
+<div class="exp-org">Carnegie Mellon University — Dept. of Engineering &amp; Public Policy, Pittsburgh, PA</div>
+<div class="exp-role"><span class="exp-role-title">Adjunct Assistant Professor</span><span class="exp-role-date">Aug 2020 – present</span></div>
+<div class="exp-role"><span class="exp-role-title">Assistant Research Professor</span><span class="exp-role-date">Sep 2017 – Jul 2020</span></div>
+<div class="exp-role"><span class="exp-role-title">Associate Director, Center for Climate and Energy Decision-Making</span><span class="exp-role-date">Nov 2015 – Jul 2020</span></div>
+<div class="exp-role"><span class="exp-role-title">Research Engineer</span><span class="exp-role-date">Nov 2015 – Sep 2017</span></div>
+<div class="exp-role"><span class="exp-role-title">Post-doctoral Fellow</span><span class="exp-role-date">Jun 2015 – Oct 2015</span></div>
+</div>
+<div class="exp-entry">
+<div class="exp-org">Environmental Defense Fund</div>
+<div class="exp-role"><span class="exp-role-title">Aviation Policy Intern, Washington, DC</span><span class="exp-role-date">May 2014 – Aug 2014</span></div>
+</div>
+<div class="exp-entry">
+<div class="exp-org">Royal Dutch Shell</div>
+<div class="exp-role"><span class="exp-role-title">Strategy &amp; Portfolio Analyst, The Hague, Netherlands</span><span class="exp-role-date">Apr 2008 – Sep 2010</span></div>
+<div class="exp-role"><span class="exp-role-title">Deployment Analyst, Singapore</span><span class="exp-role-date">Oct 2006 – Mar 2008</span></div>
+<div class="exp-role"><span class="exp-role-title">Production Planner, Singapore</span><span class="exp-role-date">Aug 2005 – Oct 2006</span></div>
+</div>
+<div class="exp-entry">
+<div class="exp-org">National University of Singapore</div>
+<div class="exp-role"><span class="exp-role-title">Research Assistant, Singapore</span><span class="exp-role-date">May 2004 – Aug 2004</span></div>
+</div>
+</section>
+<!-- PUBLICATIONS -->
+<section class="cv-section" id="publications">
+<h2 class="section-heading">Journal Articles Subject to Peer Review</h2>
+<p class="pub-note">In my group, it is standard practice to co-author with students and for students to assume first authorship. Student and postdoc co-authors are shown in <strong>bold</strong>.</p>
+<ol class="pub-list" reversed start="58" reversed="True" start="58">
+<li><span class="pub-text">Wu, H., <strong>Chen, J.</strong>, Vaishnav, P., Sun, M., Craig, M.T. (2026). Technological improvements in EV batteries offset climate-induced durability challenges. <span class="pub-journal">Nat. Clim. Chang.</span> 1–8. <a href="https://doi.org/10.1038/s41558-026-02579-z" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1038/s41558-026-02579-z" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Joseph, J.M., Nock, D., Vaishnav, P., Samaras, C. (2026). Characterizing uncertainties in residential electrification: Financial feasibility, climate impacts, and health outcomes. <span class="pub-journal">Applied Energy</span> 411, 127636. <a href="https://doi.org/10.1016/j.apenergy.2026.127636" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.apenergy.2026.127636" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Tomkins, S., Yin, S., Vaishnav, P., Stefanopoulou, A. (2025). Quantifying real and perceived barriers to EV adoption in rural Michigan. <span class="pub-journal">Sci Rep</span> 16, 2742. <a href="https://doi.org/10.1038/s41598-025-32478-w" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1038/s41598-025-32478-w" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Chen, J.</strong>, Anderson, J.E., De Kleine, R., Kim, H.C., Keoleian, G., Vaishnav, P. (2025). Vehicle-to-home charging can cut costs and greenhouse gas emissions across the USA. <span class="pub-journal">Nat Energy</span> 10, 1458–1469. <a href="https://doi.org/10.1038/s41560-025-01894-7" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1038/s41560-025-01894-7" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Cheng, L.</strong> and Vaishnav, P. (2025). How do distributed energy resources change the economics of decarbonization in Michigan. <span class="pub-journal">Energy and Buildings <a href="https://doi.org/10.1016/j.enbuild.2024.116051" target="_blank">DOI</a></span>, p.116051.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.enbuild.2024.116051" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Nawawi, S.</strong>, <strong>Yi, M.</strong>, Craig, M., <strong>Deetjen, T.</strong> and Vaishnav, P. (2025). Cross-sectoral trade-offs in a changing climate: Surrogate models to balance home energy bills, occupant comfort, and power system externalities. <span class="pub-journal">iScience <a href="https://doi.org/10.1016/j.isci.2025.112198" target="_blank">DOI</a></span>, 28(6).</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.isci.2025.112198" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Toruno, C., Schallwig, A., Jain, R., <strong>McKenna, C.</strong>, Vaishnav, P., Guikema, S. and Craig, M.T. (2025). Climate change will trade-off summer and winter energy burdens. <span class="pub-journal">Environmental Research: Energy <a href="https://doi.org/10.1088/2753-3751/ad9b07" target="_blank">DOI</a></span>, 2(2), p.025012.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/2753-3751/ad9b07" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Chen, J., Craig, M.T., Michalek, J., Bruchon, M., Vaishnav, P. (2025). Negative Electric Vehicle Emissions: Vehicle-to-Grid Can Incentivize Enough Wind and Solar Investment to Reverse EV Charging Emissions. <span class="pub-journal">Environ. Sci. Technol.</span> 59, 21090–21101. <a href="https://doi.org/10.1021/acs.est.5c06944" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1021/acs.est.5c06944" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Miller, M.W. et al., Vaishnav, P., Miller, S.A. and O'Neill, M.S. (2025). Energy-Efficient Upgrades in Urban Low-Income Multifamily Housing: Energy Burdens and Lessons Learned for Best Sustainability Practices. <span class="pub-journal">Sustainability <a href="https://doi.org/10.3390/su17125464" target="_blank">DOI</a></span>, 17(12), p.5464.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.3390/su17125464" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>McKenna, C.</strong>, Gronlund, C., Hernández, D. and Vaishnav, P. (2025). When homeowners lose momentum after an energy audit: Barriers to completing weatherization in the United States Midwest. <span class="pub-journal">Energy Research &amp; Social Science <a href="https://doi.org/10.1016/j.erss.2025.103979" target="_blank">DOI</a></span>, 122, p.103979.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.erss.2025.103979" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Joseph, J.M.</strong>, Samaras, C., Nock, D., Gregory, K.B., Vaishnav, P. (2025). Rebates and grid decarbonization from the Inflation Reduction Act promote equitable adoption of energy efficiency retrofits. <span class="pub-journal">Environ. Res. Lett.</span> <a href="https://doi.org/10.1088/1748-9326/adb765" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/1748-9326/adb765" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Tsuchiya, M.</strong>, Cobb, A., Vaishnav, P. (2025). Chicago Riders' Choice of Uber and Lyft over Transit Implies a Median Breakeven Value of Travel Time Equal to the Regional Hourly Wage of $30 per Hour. <span class="pub-journal">Environ. Sci. Technol.</span> 59, 1921–1931. <a href="https://doi.org/10.1021/acs.est.4c08808" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1021/acs.est.4c08808" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Ziev, T.</strong> and Vaishnav, P. (2025). Expert elicitation to assess real-world productivity gains in laser powder bed fusion. <span class="pub-journal">Rapid Prototyping Journal <a href="https://doi.org/10.1108/rpj-04-2024-0167" target="_blank">DOI</a></span>, 31(2), pp.344-358.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1108/rpj-04-2024-0167" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Smillie, S., Vaishnav, P., Wade, C., Jordan, K., Venkatesh, A., Sinha, A. and Apt, J. (2024). Hybrid heat pumps avoid extreme marginal abatement costs of electrifying peak heating loads in cold regions. <span class="pub-journal">Environmental Research Letters <a href="https://doi.org/10.1088/1748-9326/ad6c9a" target="_blank">DOI</a></span>, 19(9), p.094054.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/1748-9326/ad6c9a" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Woody, M., Stolper, S., Vaishnav, P. and Keoleian, G.A. (2024). Vehicle scrappage policies for transportation decarbonization. <span class="pub-journal">Environmental Research: Energy <a href="https://doi.org/10.1088/2753-3751/ad6a81" target="_blank">DOI</a></span>, 1(3), p.033002.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/2753-3751/ad6a81" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Bryant, A.K. et al., Vaishnav, P., Strohbehn, G.W. (2024). Projected environmental and public health benefits of extended-interval dosing: an analysis of pembrolizumab use in a US national health system. <span class="pub-journal">The Lancet Oncology</span> 25, 802–810. <a href="https://doi.org/10.1016/S1470-2045(24)00200-6" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/S1470-2045(24)00200-6" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>McKenna, C.</strong>, Gronlund, C. and Vaishnav, P. (2024). Heating with justice: Barriers and solutions to a just energy transition in cold climates. <span class="pub-journal">Resources, Conservation and Recycling <a href="https://doi.org/10.1016/j.resconrec.2024.107699" target="_blank">DOI</a></span>, 208, p.107699.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.resconrec.2024.107699" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Vaishnav, P., Tian, Y., Isaac, C. and Mohan, A. (2024). Automation and electrification in long-haul trucking cuts urban health and environmental damages. <span class="pub-journal">Transportation Research Part D: Transport and Environment <a href="https://doi.org/10.1016/j.trd.2023.104187" target="_blank">DOI</a></span>, 131, p.104187.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.trd.2023.104187" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Das, S., Rasouli, E., Ziev, T. et al. (2024). Design and techno economic optimization of an additively manufactured compact heat exchanger for high temperature and high pressure applications. <span class="pub-journal">Applied Thermal Engineering <a href="https://doi.org/10.1016/j.applthermaleng.2024.122778" target="_blank">DOI</a></span>, p.122778.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.applthermaleng.2024.122778" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Tano, I.N. et al. (2023). A Scalable Compact Additively Manufactured Molten Salt to Supercritical Carbon Dioxide Heat Exchanger for Solar Thermal Application. <span class="pub-journal">Journal of Solar Energy Engineering <a href="https://doi.org/10.1115/1.4063081" target="_blank">DOI</a></span>, pp.1-33.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1115/1.4063081" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Woody, M., Keoleian, G.A., Vaishnav, P. (2023). Decarbonization potential of electrifying 50% of U.S. light-duty vehicle sales by 2030. <span class="pub-journal">Nature Communications</span> 14, 7077. <a href="https://doi.org/10.1038/s41467-023-42893-0" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1038/s41467-023-42893-0" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Vaishnav, P. (2023). How can quantitative policy analysis inform the energy transition? The case of electrification. <span class="pub-journal">Frontiers in Sustainable Energy Policy <a href="https://doi.org/10.3389/fsuep.2023.1271301" target="_blank">DOI</a></span>, 2, p.1271301.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.3389/fsuep.2023.1271301" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Wildstein, P.J., Craig, M.T. and Vaishnav, P. (2023). Participant Overrides Can Halve the Reliability Value of Direct Load Control Programs. <span class="pub-journal">Energy and Buildings <a href="https://doi.org/10.1016/j.enbuild.2023.113606" target="_blank">DOI</a></span>, p.113606.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.enbuild.2023.113606" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Vaishnav, P. (2023). Implications of Green Technologies for Environmental Justice. <span class="pub-journal">Annual Review of Environment and Resources <a href="https://doi.org/10.1146/annurev-environ-112022-092114" target="_blank">DOI</a></span>, 48.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1146/annurev-environ-112022-092114" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Mohan, A., Bruchon, M., Michalek, J., Vaishnav, P. (2023). Life Cycle Air Pollution, Greenhouse Gas, and Traffic Externality Benefits and Costs of Electrifying Uber and Lyft. <span class="pub-journal">Environ. Sci. Technol.</span> 57, 8524–8535. <a href="https://doi.org/10.1021/acs.est.2c07030" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1021/acs.est.2c07030" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Woody, M., Vaishnav, P., Craig, M.T. and Keoleian, G.A. (2022). Life Cycle Greenhouse Gas Emissions of the USPS Next-Generation Delivery Vehicle Fleet. <span class="pub-journal">Environmental Science &amp; Technology <a href="https://doi.org/10.1021/acs.est.2c02498" target="_blank">DOI</a></span>, 56(18), pp.13391-13397.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1021/acs.est.2c02498" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Ziev, T.</strong> et al. (2023). Cost of Using Laser Powder Bed Fusion to Fabricate a Molten Salt-to-Supercritical Carbon Dioxide Heat Exchanger for Concentrating Solar Power. <span class="pub-journal">3D Printing and Additive Manufacturing</span>. <a href="https://doi.org/10.1089/3dp.2022.0188" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1089/3dp.2022.0188" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Mohan, A.</strong>, Sengupta, S., Vaishnav, P., Tongia, R., Ahmed, A., Azevedo, I.L. (2022). Sustained cost declines in solar PV and battery storage needed to eliminate coal generation in India. <span class="pub-journal">Environ. Res. Lett.</span> 17, 114043. <a href="https://doi.org/10.1088/1748-9326/ac98d8" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/1748-9326/ac98d8" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Woody, M., Vaishnav, P., Keoleian, G.A. et al. (2022). Corrigendum: The role of pickup truck electrification in the decarbonization of light-duty vehicles. <span class="pub-journal">Environmental Research Letters <a href="https://doi.org/10.1088/1748-9326/ac5142" target="_blank">DOI</a></span> 17, 089501.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/1748-9326/ac5142" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Mohan, A.</strong>, Vaishnav, P. (2022). Impact of automation on long haul trucking operator-hours in the United States. <span class="pub-journal">Humanities and Social Science Communications</span> 9, 1–10. <a href="https://doi.org/10.1057/s41599-022-01103-w" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1057/s41599-022-01103-w" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Woody, M., Vaishnav, P., Keoleian, G.A., Kleine, R.D., Kim, H.C., Anderson, J.E., Wallington, T.J. (2022). The role of pickup truck electrification in the decarbonization of light-duty vehicles. <span class="pub-journal">Environ. Res. Lett.</span> 17, 034031. <a href="https://doi.org/10.1088/1748-9326/ac5142" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/1748-9326/ac5142" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Tano, I.-N. et al. (2022). An additively-manufactured molten salt-to-supercritical carbon di-oxide primary heat exchanger for solar thermal power generation. <span class="pub-journal">Solar Energy</span> 234, 152–169. <a href="https://doi.org/10.1016/j.solener.2022.01.056" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.solener.2022.01.056" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Woody, M., Craig, M.T., Vaishnav, P.T. et al. (2022). Optimizing future cost and emissions of electric delivery vehicles. <span class="pub-journal">Journal of Industrial Ecology <a href="https://doi.org/10.1111/jiec.13221" target="_blank">DOI</a></span>.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1111/jiec.13221" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Deetjen, T.A., Walsh, L., Vaishnav, P. (2021). US residential heat pumps: the private economic potential and its emissions, health, and grid impacts. <span class="pub-journal">Environ. Res. Lett.</span> 16, 084024. <a href="https://doi.org/10.1088/1748-9326/ac10dc" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/1748-9326/ac10dc" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Woody, M., Vaishnav, P., Craig, M.T., Lewis, G.M., Keoleian, G.A. (2021). Charging Strategies to Minimize Greenhouse Gas Emissions of Electrified Delivery Vehicles. <span class="pub-journal">Environmental Science &amp; Technology <a href="https://doi.org/10.1021/acs.est.1c03483" target="_blank">DOI</a></span> 55, 10108–10120.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1021/acs.est.1c03483" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Lee, J., Marla, L., Vaishnav, P. (2021). The impact of climate change on the recoverability of airline networks. <span class="pub-journal">Transportation Research Part D</span> 95, 102801. <a href="https://doi.org/10.1016/j.trd.2021.102801" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.trd.2021.102801" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Lathwal P.</strong>, Vaishnav P., Morgan M.G. (2021). Environmental and health consequences of shore power for vessels calling at major ports in India. <span class="pub-journal">Environ. Res. Lett. <a href="https://doi.org/10.1088/1748-9326/abfd5b" target="_blank">DOI</a></span> <a href="http://iopscience.iop.org/article/10.1088/1748-9326/abfd5b" target="_blank">DOI</a> <em>— Selected as Top 3 paper by Young Researchers at OECD ITF Summit, May 2021.</em></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/1748-9326/abfd5b" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Shen, X., Liu, P., Qiu, Y.L., Patwardhan, A. and Vaishnav, P. (2021). Estimation of change in house sales prices in the United States after heat pump adoption. <span class="pub-journal">Nature Energy</span>, 6(1), pp.30-37. <a href="https://doi.org/10.1038/s41560-020-00706-4" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1038/s41560-020-00706-4" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Roca, J.B.</strong>, Vaishnav, P., Morgan, G.M., Fuchs, E. and Mendonça, J. (2021). Technology Forgiveness: Why emerging technologies differ in their resilience to institutional instability. <span class="pub-journal">Technological Forecasting and Social Change</span>, 166, p.120599. <a href="https://doi.org/10.1016/j.techfore.2021.120599" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.techfore.2021.120599" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Vaishnav, P., Fatimah, A.M. (2020). The environmental consequences of electrifying space heating with current and future energy mixes. <span class="pub-journal">Environmental Science &amp; Technology</span>, 54(16), pp.9814-9823. <a href="https://doi.org/10.1021/acs.est.0c02705" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1021/acs.est.0c02705" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Mohan, A.</strong>, Sripad, S., Vaishnav, P., Viswanathan, V. (2020). Trade-offs between automation and light vehicle electrification. <span class="pub-journal">Nature Energy <a href="https://doi.org/10.1038/s41560-020-00726-0" target="_blank">DOI</a></span> 5, 543–549. <em>— Herb Toor Award for Best Qualifier paper (Aniruddh Mohan).</em></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1038/s41560-020-00726-0" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Reed, L.</strong>, Dworkin, M., Vaishnav, P., Morgan, M.G. (2020). Expanding Transmission Capacity: Examples of Regulatory Paths for Five Alternative Strategies. <span class="pub-journal">The Electricity Journal <a href="https://doi.org/10.1016/j.tej.2020.106770" target="_blank">DOI</a></span>, 33(6), p.106770.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.tej.2020.106770" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Funk, P.</strong>, Davis, A., Vaishnav, P., Dewitt, B., Fuchs, E.R.H. (2020). Individual inconsistency and aggregate rationality: Overcoming inconsistencies in expert judgment at the technical frontier. <span class="pub-journal">Technological Forecasting and Social Change <a href="https://doi.org/10.1016/j.techfore.2020.119984" target="_blank">DOI</a></span>, 155, p.119984.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.techfore.2020.119984" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Reed, L.</strong>, Morgan, M.G., Vaishnav, P., Armanios, D.E. (2019). Converting existing transmission corridors to HVDC is an overlooked option for increasing transmission capacity. <span class="pub-journal">PNAS</span> 116, 13879–13884. <a href="https://doi.org/10.1073/pnas.1905656116" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1073/pnas.1905656116" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Bonnín Roca, J.</strong>, Vaishnav, P., Laureijs, R.E., Mendonça, J., Fuchs, E.R.H. (2019). Technology cost drivers for a potential transition to decentralized manufacturing. <span class="pub-journal">Additive Manufacturing</span> 28, 136–151. <a href="https://doi.org/10.1016/j.addma.2019.04.010" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.addma.2019.04.010" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Abdulla, A., Vaishnav, P., Sergi, B., Victor, D.G. (2019). Limits to deployment of nuclear power for decarbonization: Insights from public opinion. <span class="pub-journal">Energy Policy</span> 129, 1339–1346. <a href="https://doi.org/10.1016/j.enpol.2019.03.039" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.enpol.2019.03.039" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Hanus, N.L., Wong-Parodi, G., Darghouth, N.R., Vaishnav, P., Azevedo, I.L. (2019). Solar PV as a mitigation strategy for the U.S. education sector. <span class="pub-journal">Environmental Research Letters</span> 14, 044004. <a href="https://doi.org/10.1088/1748-9326/aafbcf" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/1748-9326/aafbcf" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Kaack, L.H.</strong>, Vaishnav, P., Morgan, M.G., Azevedo, I.L., Rai, S. (2018). Decarbonizing intraregional freight systems with a focus on modal shift. <span class="pub-journal">Environmental Research Letters</span>, 13, 083001. <a href="https://doi.org/10.1088/1748-9326/aad56c" target="_blank">DOI</a> <em>— Editor's Featured Article.</em></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/1748-9326/aad56c" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Vaishnav, P., Horner, N., Azevedo, I.L. (2017). Was it worthwhile? Where have the benefits of rooftop solar photovoltaic generation exceeded the cost? <span class="pub-journal">Environmental Research Letters <a href="https://doi.org/10.1088/1748-9326/aa815e" target="_blank">DOI</a></span>, 12, 094015. <em>— Editor's Featured Article and Highlight of 2017.</em></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/1748-9326/aa815e" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Morgan, M.G., Vaishnav, P., Dowlatabadi, H., Azevedo, I.L. (2017). Rethinking the Social Cost of Carbon. <span class="pub-journal">Issues in Science and Technology <a href="https://doi.org/10.17226/24836" target="_blank">DOI</a></span>, Summer 33(4): 43-50.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.17226/24836" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Bonnín Roca, J.</strong>, Vaishnav, P., Morgan, M.G., Mendonça, J., Fuchs, E.R.H. (2017). When Risks Cannot Be Seen: Regulating Uncertainty in Emerging Technologies. <span class="pub-journal">Research Policy <a href="https://doi.org/10.1016/j.respol.2017.05.010" target="_blank">DOI</a></span> 46, no. 7: 1215-1233.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.respol.2017.05.010" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text"><strong>Bonnín Roca, J.</strong>, Vaishnav, P., Mendonça, J., Morgan, M.G. (2017). Getting Past the Hype About 3-D Printing. <span class="pub-journal">MIT Sloan Management Review</span> 58, 57–62.</span></li>
+<li><span class="pub-text">Vaishnav, P. (2016). Design of a Global Market Based Measure — ICAO's Market Based Mechanism: Keep It Simple. <span class="pub-journal">Carbon &amp; Climate Law Review</span> 10, 120–126.</span></li>
+<li><span class="pub-text"><strong>Bonnín Roca, J.</strong>, Vaishnav, P., Fuchs, E.R.H., Morgan, M.G. (2016). Policy needed for additive manufacturing. <span class="pub-journal">Nature Materials <a href="https://doi.org/10.1038/nmat4658" target="_blank">DOI</a></span> 15, 815–818.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1038/nmat4658" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Vaishnav, P., Petsonk, A., Avila, R.A.G., Morgan, M.G., Fischbeck, P.S. (2016). Analysis of a proposed mechanism for carbon-neutral growth in international aviation. <span class="pub-journal">Transportation Research Part D <a href="https://doi.org/10.1016/j.trd.2016.02.017" target="_blank">DOI</a></span> 45, 126–138.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.trd.2016.02.017" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Vaishnav, P., Fischbeck, P.S., Morgan, M.G., Corbett, J.J. (2016). Shore Power for Vessels Calling at U.S. Ports: Benefits and Costs. <span class="pub-journal">Environmental Science &amp; Technology <a href="https://doi.org/10.1021/acs.est.5b04860" target="_blank">DOI</a></span> 50, no. 3: 1102–10.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1021/acs.est.5b04860" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+<li><span class="pub-text">Vaishnav, P. (2014). Greenhouse gas emissions from international transport. <span class="pub-journal">Issues in Science and Technology</span>, Winter 30(2): 25-28.</span></li>
+<li><span class="pub-text">Vaishnav, P. (2013). Costs and Benefits of Reducing Fuel Burn and Emissions from Taxiing Aircraft. <span class="pub-journal">Transportation Research Record <a href="https://doi.org/10.3141/2400-08" target="_blank">DOI</a></span> 2400: 65–77.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.3141/2400-08" data-badge-popover="right" data-link-target="_blank"></div></span></li>
+</ol>
+</section>
+<!-- OTHER PUBLICATIONS -->
+<section class="cv-section" id="other-pubs">
+<h2 class="section-heading">Other Publications &amp; Writings</h2>
+<ol class="other-list" reversed start="16" reversed="True" start="16">
+<li>Fabe, P. et al. (2025). Forks to Filament — Exploring the Potential Viability of Post-Consumer TPLA in Additive Manufacturing. <em>ASME 2025 IDETC.</em> <a href="https://doi.org/10.1115/DETC2025-168771" target="_blank">DOI</a></li>
+<li>Chen, J., Keoleian, G., Vaishnav, P. (2025). Vehicle-to-home charging can cut costs and emissions. <em>Nat Energy</em> 10, 1400–1401. <a href="https://doi.org/10.1038/s41560-025-01899-2" target="_blank">DOI</a> [Invited policy brief]</li>
+<li>Manoj, A., Yin, S., Ahmed, O., Vaishnav, P., Stefanopoulou, A. and Tomkins, S. (2025). Lessons and Challenges from Crowd-Sourced Data in Rural Michigan to Assess EV Suitability. SAE Technical Paper No. 2025-01-8525.</li>
+<li><strong>Fabe, P.</strong>, <strong>Ziev, T.</strong>, Vaishnav, P. and Cooper, D. (2025). Quantifying the Environment Impact of Metal Powder Production for Additive Manufacturing. <em>Procedia CIRP</em>, 135, pp.195-200.</li>
+<li>Vaishnav, P., Deetjen, T. (2021). Can running an air conditioner in reverse save the planet? <em>Niskanen Center.</em> <a href="https://www.niskanencenter.org/can-running-an-air-conditioner-in-reverse-save-the-planet/" target="_blank">Link</a></li>
+<li>Vaishnav, P., Morgan M., Baik, S., Larsen, P. (2019). Estimating the Value of Enhanced Electric Power Resilience: Case Study of Idaho National Laboratory and a Planned Small Modular Reactor. Report for U.S. DOE under LBNL Contract.</li>
+<li>Azevedo, I., Horner, N., Siler-Evans, K., Vaishnav, P. (2018). [DATASET] Electricity Marginal Factors Estimates. Carnegie Mellon University.</li>
+<li>Vaishnav, P. (2016). Plug the Loopholes in ICAO's Plan. <em>Aviation Week &amp; Space Technology</em> 178, 66.</li>
+<li>Vaishnav, P., Morgan, M.G. (2016). Summary of a Workshop on Identifying and Avoiding Potential Dead Ends and Missed Opportunities in Climate Policy.</li>
+<li>Vaishnav, P., Abdulla, A. (2016). The Myth of Technology Neutral Regulation. <em>The Energy Collective.</em></li>
+<li>Bonnín Roca, J., Vaishnav, P., Fuchs, E.R.H., Morgan, M.G. (2015). Notes on a Workshop on Certification of Metal Additive Manufacturing Systems and Parts for Use in Civil Aviation.</li>
+<li>Branstetter, L., Horner, N., Morgan, M.G., Rubin, E., Vaishnav, P. (2015). Put Kids First, Not Gas Companies. <em>Pittsburgh Post-Gazette.</em> July 19.</li>
+<li>Vaishnav, P., Horner, N., Branstetter, L. (2015). Pennsylvania Needs and Can Afford a Shale Gas Severance Tax. <em>Pittsburgh Post-Gazette.</em> January 18.</li>
+<li>Vaishnav, P. &amp; Horner, N. (2014). Apocalypse Not: Severance Taxes and Industry Exit in the Marcellus Shale. <em>Pennsylvania Budget and Policy Center Briefing Paper.</em></li>
+<li>Vaishnav, P. (2013). ICAO Deal to (Eventually) Reduce Greenhouse Gas Emissions from Aviation a Good First Step. <em>The Energy Collective.</em></li>
+<li>Vaishnav, P. (2011). Innovation for Emerging Markets: Novel Business Models to Supply Energy to the Rural Poor. Dissertation (M.Phil.), University of Cambridge.</li>
+</ol>
+</section>
+<!-- CONFERENCES -->
+<section class="cv-section" id="conferences">
+<h2 class="section-heading">Conference Presentations with Peer-Reviewed Abstracts</h2>
+<ol class="other-list" reversed start="50" reversed="True" start="50">
+<li><strong>Nawawi, S. (Presenter)</strong>, Vaishnav, P. [POSTER] Improving Comfort, Affordability, and Efficiency: Demand-Side Solutions for Heat Pump Operation in Cold Climates. AGU Fall Meeting, New Orleans, LA, Dec 18, 2025.</li>
+<li><strong>Nawawi, S. (Presenter)</strong>, Vaishnav, P., Xiaoyang, Z., Mastrucci, A. Coupling Residential Building Stock Turnover and Thermal Demand Modeling. AGU Fall Meeting, New Orleans, LA, Dec 16, 2025.</li>
+<li>Liu, S. (Presenter), Vaishnav, P. Health Risks and Backup Power Benefits Under Extreme Weather and Power Outages. INFORMS, Atlanta, GA, Oct 27, 2025.</li>
+<li><strong>Chen, J. (Presenter)</strong>, Vaishnav, P. Vehicle-to-Home Integration in Solar-Equipped Homes. INFORMS, Atlanta, GA, Oct 27, 2025.</li>
+<li>Vaishnav, P. (Presenter). Exploiting intersectoral synergies for decarbonization. National Sustainability Society Conference, South Bend, IN, Oct 21, 2025.</li>
+<li><strong>Chen, J.</strong>, Anderson, J.E., De Kleine, R., Kim, H.C., Keoleian, G., Vaishnav, P. (Presenter). Vehicle-to-Home Charging Can Cut Costs and Greenhouse Gas Emissions across the US. Transportation Research Board Annual Meeting, Washington, DC, Jan 11-15, 2025.</li>
+<li>Nawawi, S., Yi, M., Craig, M., Vaishnav, P. (Presenter). Evaluating Tradeoffs of Residential HVAC Electrification in a Changing Climate. INFORMS, Seattle, WA, October 20-23, 2024.</li>
+<li><strong>Chen, J.</strong>, Bruchon, M., Craig, M.T., Vaishnav, P. (Presenter), Michalek, J. Electric Vehicles Can Reduce Power System Emissions via Controlled Charging or Vehicle-to-Grid. Cell Symposia: Technology barriers to electric vehicle implementation, Ann Arbor, MI, May 20-22, 2024.</li>
+<li><strong>Chen, J.</strong> (Presenter) et al. [POSTER] Vehicle-to-grid Enables Profitable Wind and Solar Capacity Expansion. Transportation Research Board Annual Meeting, Washington, DC, Jan 7-11, 2024.</li>
+<li><strong>Nawawi, S.</strong> (Presenter), Yi, M., Vaishnav, P. Reduced Complexity Models for Rapid Estimates of Building Energy Use in a Changing Climate. AGU Fall Meeting, San Francisco, Dec 2023.</li>
+<li><strong>McKenna, C.</strong> (Presenter), Vaishnav, P., Gronlund, C. The Energy Efficiency Disconnect for Southeast Michigan. BECC, Sacramento, CA, Nov 12-15, 2023.</li>
+<li><strong>Mohan, A.</strong> (Presenter), Vaishnav, P., Michalek, J. Air Pollution, Greenhouse Gas, and Traffic Externality Benefits and Costs of Fully Electrifying Ridesourcing Services. TRB Annual Meeting, Washington DC, Jan 8-12, 2023.</li>
+<li>Woody, M. (Presenter), Vaishnav, P., Craig, M., Keoleian, G. [POSTER] Life-Cycle GHG Emissions of the U.S. Postal Service Next-Generation Delivery Vehicle Fleet. TRB Annual Meeting, Washington DC, Jan 8-12, 2023.</li>
+<li>Vaishnav, P. (Presenter), McKenna, C., Gronlund, C. Equitable Transition to Clean Heating in Cold Climates. INFORMS, Indianapolis, IN, Oct 2022.</li>
+<li>McKenna, C. (Presenter), Vaishnav, P., Gronlund, C. Exploring an equitable transition to clean heating in cold climates. USAEE, Houston, TX, Oct 2022.</li>
+<li>McKenna, C. (Presenter) et al. Addressing an equitable transition to clean heating. ISSST, Pittsburgh, PA, Jun 2022.</li>
+<li>Mohan, A., Sengupta, S., Vaishnav, P. (Presenter) et al. Analysis of economic conditions needed for solar PV + battery storage to replace coal. ISSST, Pittsburgh, PA, Jun 2022.</li>
+<li>Wildstein, P. (Presenter), Craig, M.T., Vaishnav, P. Quantifying the Impact of Override Behavior on a Summer Direct Load Control Program. ISSST, Pittsburgh, PA, Jun 2022.</li>
+<li>Mohan, A. (Presenter) et al. Trade-Offs Between Automation and Light Vehicle Electrification. TRB Annual Meeting, Washington, D.C., Jan 2022.</li>
+<li>Mohan, A. (Presenter), Vaishnav, P. Impact of Automation on Long Haul Trucking Operator Hours in the United States. TRB Annual Meeting, Washington, D.C., Jan 2022.</li>
+<li>Lathwal, P. (Presenter), Vaishnav, P., Morgan, M.G. Environmental and Health Consequences of Shore Power for Vessels Calling at Major Ports in India. TRB Annual Meeting, Washington, D.C., Jan 2022.</li>
+<li>Vaishnav, P. [Virtual Poster] Electrifying Heating: Trade-offs between Comfort, Cost, and Electricity Distribution System Load. AGU Fall Meeting, New Orleans, Dec 2021.</li>
+<li>Mohan, A. et al. Sustained cost declines in solar PV and battery storage needed to eliminate coal generation in India. USAEE, Virtual, November 2021.</li>
+<li>Mohan, A. (Presenter) et al. Trade-Offs Between Automation and Light Vehicle Electrification. USAEE, Virtual, November 2021.</li>
+<li>Lathwal, P. (Presenter), Vaishnav, P., Morgan, M.G. Environmental and Health Consequences of Shore Power for Vessels Calling at Major Ports in India. ISSST, Virtual, June 2021.</li>
+<li>Vaishnav, P. (Presenter), Lathwal, P., Morgan, M.G. Impacts of Freight Trucking Pollution in the Contiguous United States. ISSST, Virtual, June 2021.</li>
+<li>Deetjen, T. (Presenter), Walsh, L., Vaishnav, P. U.S. residential heat pumps: the private cost, public benefit. 39th International Energy Workshop, Virtual, June 2021.</li>
+<li>Vaishnav, P. (Presenter) and Deetjen, T. Heat pumps with thermal energy storage: benefits and costs in the U.S. ISSST, Virtual, June 17, 2020.</li>
+<li>Deetjen, T. (Presenter) and Vaishnav, P. Heat pumps with thermal energy storage. 37th USAEE North American Conference, Denver, CO, Nov. 2019.</li>
+<li>Mohan, A. et al. Automation is no barrier to light vehicle electrification. Doctoral Consortium on Computational Sustainability, Pittsburgh, PA, Oct. 2019.</li>
+<li>Mohan, A. et al. Automation is no barrier to light vehicle electrification. PA Automated Vehicle Summit, Pocono Manor, PA, Sep. 2019.</li>
+<li>Vaishnav, P. (Presenter), Fatimah, A.M. When Should We Electrify Space Heating? AGU Fall Meeting, Washington, DC, Dec. 2018.</li>
+<li>Vaishnav, P. (Presenter) et al. When Should We Electrify Space Heating? 36th USAEE, Washington, DC, Sep. 2018.</li>
+<li>Kaack, L. (Presenter), Vaishnav, P. et al. Decarbonizing intraregional freight systems with a focus on modal shift. 36th USAEE, Washington, DC, Sep. 2018.</li>
+<li>Reed, L.B. (Presenter) et al. [POSTER] Under What Conditions is HVDC Conversion a Cost-Effective Way to Increase Transmission Capacity? 36th USAEE, Washington, DC, Sep. 2018. <em>— Best poster award, Student Poster Session.</em></li>
+<li>Vaishnav, P. (Presenter) et al. Disentangling stigma from actuarial risk: the cautionary story of nuclear power. SRA 2017 Annual Meeting, Arlington, VA, Dec. 2017.</li>
+<li>Vaishnav, P. (Presenter) et al. Disentangling stigma from actuarial risk. 35th USAEE, Houston, TX, Nov. 2017.</li>
+<li>Vaishnav, P., Abdulla, A. [POSTER] Public perceptions of clean energy technologies. SRA 2016 Annual Meeting, San Diego, CA, Dec. 2016.</li>
+<li>Bonnín Roca, J. (Presenter), Vaishnav, P. (Speaker) et al. When Risks Cannot Be Seen: Regulating Uncertainty in Emerging Technologies. RAPID + TCT, Pittsburgh, PA, May 2017.</li>
+<li>Vaishnav, P. (Presenter) et al. Benefit cost and distributional effects analysis for solar PV. SRA 2016 Annual Meeting, San Diego, CA, Dec. 2016.</li>
+<li>Vaishnav, P. (Presenter) et al. Benefit Cost and Distributional Effects Analysis for Solar PV. INFORMS Annual Meeting, Nashville, TN, Nov. 2016.</li>
+<li>Vaishnav, P. (Presenter) et al. Location, Location, Location: County-Level Costs and Benefits of Residential Solar PV. 34th USAEE, Tulsa, OK, Oct. 2016.</li>
+<li>Bonnín Roca, J., Vaishnav, P. (Presenter) et al. How can policymakers help immature technologies cross the 'valley of death'? 4S Annual Meeting, Denver, CO.</li>
+<li>Vaishnav, P. (Presenter). Analysis of ICAO's Market-based Mechanism. TMP Graduate Consortium, Pittsburgh, PA.</li>
+<li>Horner N. (Presenter), Vaishnav P. (Speaker). Grid Access in Remote Alaska: Evaluating Costs and Benefits. 33rd USAEE, New York, NY, Jun. 2014.</li>
+<li>Hoss F. (Presenter), Vaishnav P. (Speaker). What guides spending on risk mitigation: Perceptions or statistics? SRA 2013 Annual Meeting, Baltimore, MD, Dec. 2013.</li>
+<li>Horner N. (Presenter), Vaishnav P. (Speaker). Mitigating Electric Vehicle Impacts on Grid Infrastructure Requirements. 32nd USAEE, Anchorage, AK, Aug. 2013.</li>
+<li>Horner N. (Presenter), Vaishnav P. (Speaker). Assessment of Pennsylvania Natural Gas Price Support Program Candidates. 31st USAEE, Austin, TX, Nov. 2012.</li>
+<li>Vaishnav, P. (Presenter). Low-hanging fruit? The costs and benefits of reducing fuel burn and emissions from taxiing aircraft. 12th AIAA ATIO Conference, Indianapolis, IN, 2012.</li>
+<li>Vaishnav P. (Presenter). Innovating for Emerging Markets — The Case of Rural Electrification. TMP Graduate Consortium, University Park, PA, Jun. 2011.</li>
+</ol>
+</section>
+<!-- WORKSHOPS -->
+<section class="cv-section" id="workshops">
+<h2 class="section-heading">Leadership in Workshops and Research Meetings</h2>
+<ul class="workshop-list">
+<li><span class="wk-year">2023</span><span>Session chair, "Ensuring an Equitable Energy Transition," INFORMS, Phoenix, AZ, October 15–18, 2023.</span></li>
+<li><span class="wk-year">2022</span><span>Co-organizer (with C. Anna Spurlock, Burçin Ünel, Maya Aranoff, Gabriel Chan, Diana Hernández, Clark Miller, James Sallee) of a conference on <em>Advancing Energy Justice: Tools for Justice40 and Equitable Deep Decarbonization</em>, Virtual, May 11–12, 2022.</span></li>
+<li><span class="wk-year">2017</span><span>Co-organizer (with Lynn Kaack and Prof. Granger Morgan), Workshop on Strategies and Opportunities for Decarbonizing the World's Freight System, Carnegie Mellon University, Pittsburgh, PA.</span></li>
+<li><span class="wk-year">2016</span><span>Co-organizer (with Prof. Granger Morgan), Workshop on Identifying and Avoiding Potential Dead Ends and Missed Opportunities in Climate Policy, Washington, DC.</span></li>
+</ul>
+</section>
+<!-- STUDENTS -->
+<section class="cv-section" id="students">
+<h2 class="section-heading">Students Advised</h2>
+<div class="student-group">
+<div class="student-group-title">Current PhD Students</div>
+<div class="student-subgroup">At the University of Michigan</div>
+<ol class="student-list" reversed start="4" reversed="True" start="4">
+<li>So Young Yang (chair), Fall 2025–</li>
+<li>Miki Tsuchiya (chair), "Techno-economic Analysis of Technology Deployment for Energy Transition," Fall 2024–</li>
+<li>Mallika Kothari (chair), "Resilience Strategies for a Low-Income Net-Zero Neighborhood," Fall 2023–</li>
+<li>Peter Fabe (co-chair, with Prof. Daniel Cooper), "Additive Manufacturing Design: Sustainability, Systems, and Education," Fall 2023–</li>
+</ol>
+</div>
+<div class="student-group">
+<div class="student-group-title">Graduated PhD Students</div>
+<ol class="student-list" reversed start="12" reversed="True" start="12">
+<li>Shuhaib Nawawi (Chair), "Assessing how different energy storage methods in residential buildings affect trade-offs between flexible heating demand, power sector emissions, and occupant comfort," Fall 2022–Winter 2026. <span class="student-firstjob"><strong>First job:</strong> Research Scholar, International Institute for Applied Systems Analysis, Laxenburg, Austria.</span></li>
+<li>Jordan Joseph (advisor, with Profs. Nock, Gregory, and Samaras), Fall 2023–Summer 2025. <span class="student-firstjob"><strong>First job:</strong> Postdoctoral Researcher, Scott Institute for Energy Innovation, Carnegie Mellon University.</span></li>
+<li>Jiahui Chen (Chair), "EV-building integration as a decarbonization strategy for a changing grid," Fall 2022–Fall 2025.</li>
+<li>Claire McKenna (Chair), "Heating with justice," Fall 2021–Fall 2024. <span class="student-firstjob"><strong>First job:</strong> Research Engineer, Pacific Northwest National Laboratory.</span></li>
+<li>Pamela Wildstein (advisor, Committee Chair Prof. Michael Craig), "Reliability Contribution of Residential Dynamic Rates," Fall 2022–Spring 2024. <span class="student-firstjob"><strong>First job:</strong> Market Analyst at Monitoring Analytics.</span></li>
+<li>Tracey Ziev (Chair), "Technoeconomic Analysis of Laser Powder Bed Fusion to Produce High-Performance Metal Heat Exchangers," Fall 2019–Summer 2023. <span class="student-firstjob"><strong>First job:</strong> Research Engineer, Carbon Solutions, LLC </span><span class="student-firstjob"><strong>Current job:</strong>  Director of Project Engineering, Carbon Solutions, LLC.</span></li>
+<li>Aniruddh Mohan (co-chair with Prof. Venkat Viswanathan), "Technology and policy problems related to the electrification of transport," Fall 2018–Summer 2022. <span class="student-firstjob"><strong>First job:</strong> Distinguished Postdoctoral Fellow, Andlinger Center, Princeton University </span><span class="student-firstjob"><strong>Current job:</strong>  Energy Associate, The Brattle Group.</span></li>
+<li>Priyank Lathwal (co-chair with Prof. Granger Morgan), "Essays in Environmental, Climate, and Public Health Impacts of Freight Transportation," Summer 2018–Fall 2021. <span class="student-firstjob"><strong>First job:</strong> Young Professional, Transport Global Practice, The World Bank Group </span><span class="student-firstjob"><strong>Current job:</strong>  Energy Specialist, The World Bank Group.</span></li>
+<li>Jihoon Shin (co-advised with Profs. Morgan, Barros, and Amaral), "Exploring opportunities for Portugal to join the supply chain for outfitting aircraft cabin interiors," Fall 2016–Spring 2022. <span class="student-firstjob"><strong>First job:</strong> Assistant Professor, Hong Kong University of Science and Technology (GZ).</span></li>
+<li>Elizabeth Reed (co-chair with Prof. Granger Morgan), "Assessing High Voltage Direct Current (HVDC) as an enabling technology for deep decarbonization of the electricity grid," Fall 2016–Fall 2020. <span class="student-firstjob"><strong>First job:</strong> Research manager, Niskanen Center </span><span class="student-firstjob"><strong>Current job:</strong>  Director, Climate and Energy, Niskanen Center.</span></li>
+<li>Patrick Funk (co-advised with Profs. Fuchs and Davis), "Discovering the heuristics of additive manufacturing," Fall 2016–Fall 2019. <span class="student-firstjob"><strong>First job:</strong> Statistician, U.S. Food and Drug Administration </span><span class="student-firstjob"><strong>Current job:</strong>  Associate Partner, Valdos Consulting, LLC.</span></li>
+<li>Jaime Bonnín Roca (co-advised with Profs. Fuchs, Morgan, and Mendonça), "Leaders and followers: challenges and opportunities in the adoption of metal additive manufacturing technologies," Fall 2017. <span class="student-firstjob"><strong>First job:</strong> Postdoctoral researcher, Institute for Manufacturing, University of Cambridge </span><span class="student-firstjob"><strong>Current job:</strong>  Tenure-track assistant professor, Eindhoven University of Technology, Netherlands.</span></li>
+</ol>
+</div>
+<div class="student-group">
+<div class="student-group-title">Postdoctoral Researchers</div>
+<ol class="student-list" reversed start="4" reversed="True" start="4">
+<li>Shanshan Liu (lead advisor), Sep 2024–Aug 2025</li>
+<li>Ming Yi (lead advisor, with Prof. Michael Craig), April 2023–June 2023</li>
+<li>Thomas Deetjen (lead advisor, co-advised with Profs. Azevedo and Samaras), May 2019–Spring 2020</li>
+<li>Sunhee Baik (co-advisor with Profs. Morgan and Davis), April 2019–June 2019</li>
+</ol>
+</div>
+<div class="student-group">
+<div class="student-group-title">Master's Students</div>
+<div class="student-subgroup">At the University of Michigan</div>
+<ol class="student-list" reversed start="9" reversed="True" start="9">
+<li>Eeshan Bhat, Capstone project for ESENG503, Winter 2026</li>
+<li>Major Stevens, Independent study, "Drivers of Energy Audit Effectiveness," Fall 2024–Fall 2025</li>
+<li>Lanzhao Cheng, Chair, Master's Thesis, "How do distributed energy resources change the economics of decarbonization," Fall 2022–Spring 2024</li>
+<li>Shagun Parekh, Independent study, "Heating with Justice," Fall 2022–Spring 2024</li>
+<li>Yizhou Tian, Independent study, "The carbon footprint of automated freight," Fall 2022–Summer 2023</li>
+<li>Moksha Menghaney, Tianyi Zhang, Rishi Madethatt (with Prof. Carina Gronlund), "Literature Review on Infrastructure Interdependencies," Winter 2022</li>
+<li>Pamela Wildstein (with Prof. Michael Craig), "Quantifying demand response," Winter 2021–Summer 2022</li>
+<li>Sofia Camarero (with Prof. Jose Alfaro), "Trade off analysis between biochar and syngas in gasification of hemp agricultural wastes," Winter 2021–Winter 2022</li>
+<li>Maxwell Woody (with Profs. Keoleian, Craig, and Lewis), "Minimizing GHG Emissions from an Electrified Delivery Fleet," Fall 2020–Winter 2021</li>
+</ol>
+<div class="student-subgroup">At Carnegie Mellon University</div>
+<ol class="student-list" reversed start="7" reversed="True" start="7">
+<li>Pranav Gupta (with Dr. Venkatesh and Prof. Jaramillo), "Air conditioning in the global South," Fall 2020–Fall 2021</li>
+<li>Jasmine Lim (with Prof. Jaramillo), "Air conditioning in the global South," Fall 2019</li>
+<li>Aradhana Gahlaut, "Climate change-related disruptions to the U.S. air system," Fall 2018 and Spring 2019</li>
+<li>Meghana Kavakuntala, "Electrification of heating in the United States — accounting for a changed climate," Spring 2018</li>
+<li>Adilla Mutia Fatimah, "Electrification of heating in the United States," Fall 2017</li>
+<li>Srijana Rai (with Lynn Kaack), "Decarbonizing Global Freight Systems," Fall 2017</li>
+<li>Courtney Thier, Yichen Wei, Tania Lopez, "Updating a tool to analyze cost and environmental impacts of electricity portfolios for Pennsylvania," Fall 2015</li>
+</ol>
+</div>
+<div class="student-group">
+<div class="student-group-title">Undergraduates</div>
+<div class="student-subgroup">At the University of Michigan</div>
+<ol class="student-list" reversed start="2" reversed="True" start="2">
+<li>Shagun Parekh, "Heating with Justice," Spring 2021</li>
+<li>Yizhou Tian, "The carbon footprint of automated freight," Summer 2021</li>
+</ol>
+<div class="student-subgroup">At Carnegie Mellon University</div>
+<ol class="student-list" reversed start="6" reversed="True" start="6">
+<li>Frank Andujar Lugo (with Prof. Jaramillo), "Air conditioning in the global South," Fall 2019–Spring 2020</li>
+<li>Liam Walsh (with Dr. Deetjen), "Assessing the Value of Flexible Electric Heating," Summer 2019</li>
+<li>Krishna Dave, "Airline data for forecasting future airline emissions," Spring 2018</li>
+<li>Olamitundun Oladipo (with Profs. Davis and Krishnamurti), "Countering misinformation," Fall 2017</li>
+<li>Krishna Dave (with Jaime Bonnín Roca), "Willingness to pay for reduced lead times in aviation supply chains," Fall 2017</li>
+<li>Cheyenne Shankle, "Identifying proposed new technologies to improve commercial aircraft fuel efficiency," Spring 2016</li>
+</ol>
+</div>
+</section>
+<!-- PHD COMMITTEE SERVICE -->
+<section class="cv-section" id="phd-committee">
+<h2 class="section-heading">PhD Thesis &amp; Qualifier Committee Service</h2>
+<div class="student-group-title" style="margin-bottom:12px;">Thesis Committees</div>
+<ol class="committee-list" reversed start="7" reversed="True" start="7">
+<li>Owusu-Obeng, Papa Yaw (chair: Prof. Michael Craig), "Balancing Local Priorities with Regional Decarbonization: Pathways for Utility-Scale Solar Expansion." <span class="grad-badge">Graduated Summer 2025</span></li>
+<li>Woody, Max (chairs: Profs. Keoleian and Skerlos), "Decarbonizing Road Transportation: Energy, Emissions, Cost, and Policy for Battery Electric and Hydrogen Fuel Cell Vehicles." <span class="grad-badge">Graduated Winter 2025</span></li>
+<li>Vanatta, Max (chair: Prof. Michael Craig), "Heat and Power: The Evolving Provision of Industrial Heat and Thermal Generation in a Decarbonizing World." <span class="grad-badge">Graduated Winter 2025</span></li>
+<li>Sean Smillie (with Profs. Apt, Morgan, and Freeman), "Challenges at the interface of the natural gas and electric systems." <span class="grad-badge">Graduated Fall 2023</span></li>
+<li>Yuchuan Lai (with Prof. Dzombak, Cohon, and Samaras), "Use of historical data to assess and forecast regional climate change." <span class="grad-badge">Graduated Fall 2020</span></li>
+<li>Lynn Kaack (with Profs. Morgan, Apt, Azevedo, and McSharry), "Challenges and Prospects for Data-Driven Climate Change Mitigation." <span class="grad-badge">Graduated Spring 2019</span></li>
+<li>Kerim Dickson (with Profs. Dzombak, Cohon, and Samaras), "Interbasin Transfers in the United States: Present and Future." <span class="grad-badge">Graduated Fall 2018</span></li>
+</ol>
+<div class="student-group-title" style="margin: 24px 0 12px;">Qualifier Committees (Carnegie Mellon University)</div>
+<ol class="committee-list" reversed start="5" reversed="True" start="5">
+<li>Woo Suk Chun (Civil &amp; Environmental Engineering), Fall 2017</li>
+<li>Tania Lopez (Civil &amp; Environmental Engineering), Fall 2017</li>
+<li>Jiaan Wang (Civil &amp; Environmental Engineering), Fall 2017</li>
+<li>Yuchuan Lai (Civil &amp; Environmental Engineering), Fall 2017</li>
+<li>Miranda Gorman (Civil &amp; Environmental Engineering), Fall 2016</li>
+</ol>
+</section>
+<!-- TEACHING -->
+<section class="cv-section" id="teaching">
+<h2 class="section-heading">Educational Contributions</h2>
+<div class="student-group-title">Courses Taught as Instructor</div>
+<p style="font-size:13px; color: var(--muted); font-style:italic; margin-bottom:18px;">At the University of Michigan</p>
+<div class="course-entry">
+<div class="course-name">EAS610: Advanced Life Cycle Assessment</div>
+<table class="evals-table">
+<tr><td>2021 (n=12/34)</td><td><span class="eval-score">4.7</span>/5 course quality</td><td><span class="eval-score">4.9</span>/5 teaching</td></tr>
+<tr><td>2022 (n=19/28)</td><td><span class="eval-score">4.4</span>/5 course quality</td><td><span class="eval-score">4.8</span>/5 teaching</td></tr>
+<tr><td>2023 (n=10/34)</td><td><span class="eval-score">4.5</span>/5 course quality</td><td><span class="eval-score">4.7</span>/5 teaching</td></tr>
+<tr><td>2024 (n=16/35)</td><td><span class="eval-score">3.9</span>/5 course quality</td><td><span class="eval-score">4.1</span>/5 teaching</td></tr>
+<tr><td>2025 (n=21/30)</td><td><span class="eval-score">3.9</span>/5 course quality</td><td><span class="eval-score">4.1</span>/5 teaching</td></tr>
+</table>
+</div>
+<div class="course-entry">
+<div class="course-name">EAS580: Sustainable Transportation</div>
+<table class="evals-table">
+<tr><td>2021 (n=9/14)</td><td><span class="eval-score">4.8</span>/5 course quality</td><td><span class="eval-score">4.9</span>/5 teaching</td></tr>
+<tr><td>2022 (n=5/9)</td><td><span class="eval-score">4.9</span>/5 course quality</td><td><span class="eval-score">4.9</span>/5 teaching</td></tr>
+<tr><td>2023 (n=20/27)</td><td><span class="eval-score">4.7</span>/5 course quality</td><td><span class="eval-score">4.8</span>/5 teaching</td></tr>
+<tr><td>2025 (n=17/24)</td><td><span class="eval-score">4.3</span>/5 course quality</td><td><span class="eval-score">4.4</span>/5 teaching</td></tr>
+</table>
+</div>
+<div class="course-entry">
+<div class="course-name">EAS551: Climate Change Science and Solutions</div>
+<table class="evals-table">
+<tr><td>2021 (n=18/22)</td><td><span class="eval-score">4.8</span>/5 course quality</td><td><span class="eval-score">5.0</span>/5 teaching</td></tr>
+<tr><td>2022 (n=22/43)</td><td><span class="eval-score">4.6</span>/5 course quality</td><td><span class="eval-score">4.8</span>/5 teaching</td></tr>
+<tr><td>2024 (n=20/43)</td><td><span class="eval-score">3.5</span>/5 course quality</td><td><span class="eval-score">3.7</span>/5 teaching</td></tr>
+<tr><td>2025 (n=23/46)</td><td><span class="eval-score">4.9</span>/5 course quality</td><td><span class="eval-score">4.8</span>/5 teaching</td></tr>
+</table>
+</div>
+<p style="font-size:13px; color: var(--muted); font-style:italic; margin: 18px 0 10px;">At Carnegie Mellon University</p>
+<div class="course-entry">
+<div class="course-name">Climate Change Science and Adaptation</div>
+<table class="evals-table">
+<tr><td>2018 (n=8)</td><td><span class="eval-score">4.4</span>/5 course quality</td><td><span class="eval-score">4.6</span>/5 teaching</td></tr>
+<tr><td>2017 (n=17)</td><td><span class="eval-score">4.5</span>/5 course quality</td><td><span class="eval-score">4.5</span>/5 teaching</td></tr>
+<tr><td>2016 (n=20)</td><td><span class="eval-score">4.5</span>/5 course quality</td><td><span class="eval-score">4.6</span>/5 teaching</td></tr>
+</table>
+</div>
+<div class="student-group-title" style="margin: 28px 0 12px;">Educational Outreach</div>
+<ul class="service-list">
+<li><em>Engineer Your World</em> — Instructor for CMU's Gelfand Center summer outreach program (middle school), green engineering and environmental LCA, July 23–27, 2018.</li>
+<li><em>SUCCEED (Summer Centre for Climate and Energy Decision-making)</em> — Led PhD students to organize a five-day workshop for high school students on energy and environment issues. Summers 2016, 2017, 2018, 2019.</li>
+</ul>
+<div class="student-group-title" style="margin: 28px 0 12px;">Professional Training</div>
+<ul class="service-list">
+<li>Training on environmental lifecycle analysis delivered to Schlumberger Technology Corporation, Houston, TX (via SEAS Online Learning and Academic Innovation).</li>
+<li>At Shell Singapore (2007): 50 hours of classroom training in demand planning, production planning, and supply network planning to plant operators, planners, and supply chain managers.</li>
+</ul>
+</section>
+<!-- GRANTS -->
+<section class="cv-section" id="grants">
+<h2 class="section-heading">Grants</h2>
+<div class="grant-entry">
+<div class="grant-title">A community-facing test bed for beneficial electrification technologies and the public's understanding of them</div>
+<div class="grant-amount">$177,103</div>
+<div class="grant-pi">PI: Parth Vaishnav  ·  Funder: Institute for Energy Solutions</div>
+<div class="grant-duration">Sep 2025 – Aug 2027</div>
+</div>
+<div class="grant-entry">
+<div class="grant-title">Anti-Frost Coatings to Improve Heat Pump Efficiency and Adoption in Cold Climates</div>
+<div class="grant-amount">$100k / $200k</div>
+<div class="grant-pi">PI: Anish Tuteja (UM)  ·  Co-PI: Parth Vaishnav  ·  Funder: Graham Sustainability Institute, University of Michigan</div>
+<div class="grant-duration">Feb 2023 – Apr 2026</div>
+</div>
+<div class="grant-entry">
+<div class="grant-title">An Equitable, Affordable &amp; Resilient Nationwide Energy System Transition (EARNEST)</div>
+<div class="grant-amount">$472k / $17.8M</div>
+<div class="grant-pi">PI: Inês Azevedo (Stanford)  ·  Co-PI: Parth Vaishnav (UM) &amp; others  ·  Funder: U.S. Department of Energy</div>
+<div class="grant-duration">Oct 2023 – Oct 2025 (terminated)</div>
+</div>
+<div class="grant-entry">
+<div class="grant-title">Holistic Modular Energy-efficient Directed Cooling Solutions (HoMEDiCS) for Edge Computing</div>
+<div class="grant-amount">$313k / $3.6M</div>
+<div class="grant-pi">PI: Vinod Narayanan (UC Davis)  ·  Co-PI: Parth Vaishnav (UM)  ·  Funder: U.S. DOE</div>
+<div class="grant-duration">Sep 2023 – Sep 2026</div>
+</div>
+<div class="grant-entry">
+<div class="grant-title">Enabling Micro-pin Array Receivers for Power Generation and High-temperature Process Heating Using Metal Additive Manufacturing</div>
+<div class="grant-amount">$375k / $4.6M</div>
+<div class="grant-pi">PI: Vinod Narayanan (UC Davis)  ·  Co-PI: Parth Vaishnav  ·  Funder: U.S. DOE</div>
+<div class="grant-duration">Oct 2022 – Oct 2025 (terminated)</div>
+</div>
+<div class="grant-entry">
+<div class="grant-title">EV-building integration as a decarbonization strategy for a changing grid</div>
+<div class="grant-amount">$200,000</div>
+<div class="grant-pi">PI: Parth Vaishnav (UM)  ·  Co-PI: Greg Keoleian  ·  Funder: Ford–Michigan–Ann Arbor Alliance</div>
+<div class="grant-duration">April 2022 – March 2024</div>
+</div>
+<div class="grant-entry">
+<div class="grant-title">Bold Challenges Nurture Phase</div>
+<div class="grant-amount">$50,000</div>
+<div class="grant-pi">PI: Parth Vaishnav  ·  Co-PIs: Michael Craig, Johanna Mathieu, Carina Gronlund (UM)  ·  Funder: University of Michigan OVPR</div>
+<div class="grant-duration">Jun 2022 – May 2023</div>
+</div>
+<div class="grant-entry">
+<div class="grant-title">Heating with Justice: How can we make electrified space heating equitable?</div>
+<div class="grant-amount">$300,000</div>
+<div class="grant-pi">PI: Parth Vaishnav  ·  Co-PI: Carina Gronlund (UM)  ·  Funder: Graham Sustainability Institute, University of Michigan</div>
+<div class="grant-duration">Mar 2021 – Feb 2023</div>
+</div>
+<div class="grant-entry">
+<div class="grant-title">Guidance for Decarbonization and Sustainable Operation of Battery Systems in Electrified Delivery Vehicles</div>
+<div class="grant-amount">$150,000</div>
+<div class="grant-pi">PI: Greg Keoleian (UM)  ·  Co-PI: Parth Vaishnav  ·  Funder: Responsible Battery Coalition</div>
+<div class="grant-duration">Jun 2020 – Dec 2020</div>
+</div>
+<div class="grant-entry">
+<div class="grant-title">Sustainability of Electrified Light-Duty Trucks</div>
+<div class="grant-amount">$210,000</div>
+<div class="grant-pi">PI: Greg Keoleian (UM)  ·  Co-PI: Parth Vaishnav  ·  Funder: Ford–Michigan–Ann Arbor Alliance</div>
+<div class="grant-duration">Apr 2021 – Mar 2023</div>
+</div>
+<div class="grant-entry">
+<div class="grant-title">The Effect of Ride Hailing on Energy Use, the Environment, and on Equity</div>
+<div class="grant-amount">$75,000</div>
+<div class="grant-pi">PI: Parth Vaishnav (CMU)  ·  Co-PI: Jeremy Michalek  ·  Funder: Scott Institute for Energy Innovation, CMU</div>
+<div class="grant-duration">Sep 2020 – Aug 2022</div>
+</div>
+<div class="grant-entry">
+<div class="grant-title">What new jobs might autonomous trucking create?</div>
+<div class="grant-amount">$75,000</div>
+<div class="grant-pi">PI: Parth Vaishnav (CMU)  ·  Funder: Block Center for Technology &amp; Society, CMU</div>
+<div class="grant-duration">Sep 2019 – Aug 2020</div>
+</div>
+<div class="grant-entry">
+<div class="grant-title">Realizing the full value of flexible electric heating</div>
+<div class="grant-amount">$150k / $300k</div>
+<div class="grant-pi">PI: Parth Vaishnav (CMU)  ·  Co-PI: Lucy Qiu (UMD)  ·  Funder: Alfred P. Sloan Foundation</div>
+<div class="grant-duration">Apr 2019 – Apr 2021</div>
+</div>
+<div class="grant-entry">
+<div class="grant-title">To analyze the challenges and opportunities associated with upgrading and transforming high voltage transmission lines</div>
+<div class="grant-amount">$165,000</div>
+<div class="grant-pi">PI: Granger Morgan (CMU)  ·  Co-PI: Parth Vaishnav  ·  Funder: Alfred P. Sloan Foundation</div>
+<div class="grant-duration">Jul 2018 – Dec 2019</div>
+</div>
+<div class="grant-entry">
+<div class="grant-title">Low-Hanging Fruit? The Costs and Benefits of Reducing Fuel Burn and Emissions from Taxiing Aircraft</div>
+<div class="grant-amount">$10,000</div>
+<div class="grant-pi">PI: Parth Vaishnav  ·  Funder: Transportation Research Board, National Academy of Sciences</div>
+<div class="grant-duration">Oct 2012 – Sep 2013</div>
+</div>
+</section>
+<!-- INVITED TALKS -->
+<section class="cv-section" id="talks">
+<h2 class="section-heading">Invited Talks</h2>
+<ol class="talks-list" reversed start="26" reversed="True" start="26">
+<li>"Giving Data a Voice: Quantifying the Societal Benefits of Transportation Electrification, VGI and V2G," V2G Business, Policy &amp; Technology Forum, Los Angeles, CA, April 28, 2026.</li>
+<li>"Vehicle-to-home charging can cut costs and greenhouse gas emissions across the USA," Resources for the Future, Washington, DC, January 30, 2026.</li>
+<li>"Vehicle-to-home charging can cut costs and greenhouse gas emissions across the USA," Texas EV Alliance, Virtual, January 23, 2026.</li>
+<li>"Exploiting Intersectoral Synergies for Decarbonization," Institute for Energy Solutions, University of Michigan, September 11, 2025.</li>
+<li>"Exploiting intersectoral synergies for decarbonization," International Institute for Applied Systems Analysis, Laxenburg, Austria, August 19, 2025.</li>
+<li>"Exploiting intersectoral synergies for decarbonization," Carleton University, Ottawa, Canada, February 27, 2025.</li>
+<li>"V2X research at the University of Michigan," UK Bidirectional Charging Delegation Hosted by the Michigan Economic Development Corporation, Detroit, MI, September 23, 2024.</li>
+<li>"Electrify Everything? Implications of heating electrification for pollution, the electricity grid, and equity," Chevron Corporate Strategy and Sustainability, August 2, 2023.</li>
+<li>"Electrify Everything? Implications of heating electrification for pollution, the electricity grid, and equity," MIT Joint Program on the Science and Policy of Global Change, June 2, 2023.</li>
+<li>"Emissions from Heating and Cooling: Energy Sources and Uses," Weimer School of Advanced Studies in Real Estate and Land Economics, The Hoyt Institute, West Palm Beach, Florida, May 19–20, 2023.</li>
+<li>"Real-world insights on the effect of electrification on energy burdens," Green Home Institute, May 1, 2023. <a href="https://www.youtube.com/watch?v=y9QfImV0rnI" target="_blank">Video</a> (&gt;150 live attendees).</li>
+<li>"Equity, Behavior, and Electrification: Case Studies from the Residential and Power Sectors," Basic Research Needs to Understand the Human Dimensions of Energy Systems Workshop, NREL, Golden, CO, September 6–7, 2022.</li>
+<li>"Heating with Justice," at the Graham Sustainability Institute, April 5, 2022.</li>
+<li>"The consequences of electrification for air pollution," Chinese Society for Industrial Ecology, Nov 8, 2021. <a href="https://www.bilibili.com/video/BV1Cb4y187Mo" target="_blank">Video</a>.</li>
+<li>"Clean Energy Conversation focused on the intersection of infrastructure transformation and Equity," Graham Sustainability Institute, University of Michigan, February 23, 2021.</li>
+<li>"Do Heat pumps Save Energy and Increase Home Value?" with Prof. Lucy Qiu, Green Home Institute, January 21, 2021. <a href="https://www.youtube.com/watch?v=67_FE6k9X_A" target="_blank">Video</a>.</li>
+<li>"Trade-offs between automation and light vehicle electrification," Finland-Michigan Energy Circle Collaboration Toward Electrification, Nov 12, 2020.</li>
+<li>"Vehicles: Efficiency and Electrification," Virtual Workshop on a Circular Carbon Economy, Center on Global Energy Policy at Columbia University, October 27, 2020.</li>
+<li>"Electrify everything? Two case studies," NEW Energy: Conversations with Early Career Energy Researchers, Irving Institute, Dartmouth College, July 1, 2020. <a href="https://www.youtube.com/watch?v=FAi5I9ANPZ8" target="_blank">Video</a>.</li>
+<li>"Electrification in the real world: can autonomous vehicles be electric?" School for Environment and Sustainability, University of Michigan, February 18, 2020.</li>
+<li>"Engineering to reduce transport greenhouse gas emissions: Autonomous electric vehicles and distributed additive manufacturing," Dept. of Mechanical and Aerospace Engineering, UC San Diego, Feb 27, 2019.</li>
+<li>"The Consequences of Decarbonization Strategies for Equity," School of Global Policy and Strategy, UC San Diego, Feb 28, 2019.</li>
+<li>"Additive manufacturing: economics and challenges to adoption," Webinar to Lawrence Livermore National Laboratory, Feb 1, 2019.</li>
+<li>"What can government do to support the deployment of an emerging technology?" AED Days 2018, Oeiras, Portugal, Nov 21, 2018.</li>
+<li>"How might 3D printing change manufacturing practice and supply chains?" Institute for Manufacturing, University of Cambridge, Mar 15, 2018.</li>
+<li>"Is the sky the limit: can we decarbonize civil aviation?" Deep Decarbonization Initiative, University of California San Diego, Nov 29, 2017.</li>
+</ol>
+</section>
+<!-- AWARDS -->
+<section class="cv-section" id="awards">
+<h2 class="section-heading">Awards &amp; Honors</h2>
+<ul class="award-list">
+<li><span class="award-year">2025</span><span>Mohan &amp; Vaishnav (2022), "Impact of automation on long haul trucking operator-hours in the United States," selected as one of the Top 50 papers published by <em>Humanities and Social Science Communications</em> in the decade 2015–25.</span></li>
+<li><span class="award-year">2023</span><span>Selected as a Science Communication Identities Project (SCIP) fellow — a one-year professional development opportunity for pre-tenure faculty at U.S. institutions who identify as underrepresented racial or ethnic minorities.</span></li>
+<li><span class="award-year">2022</span><span>Outstanding student paper award, ASME Energy Sustainability Conference, for "A Scalable Compact Additively-Manufactured Molten-Salt to Supercritical CO₂ Heat Exchanger for Solar Thermal Application."</span></li>
+<li><span class="award-year">2021</span><span>"The Environmental Consequences of Electrifying Space Heating" (ES&amp;T, 2020) selected as second runner-up of the ES&amp;T Best Paper Award for Best Policy Article in 2020.</span></li>
+<li><span class="award-year">2019</span><span>"Decarbonizing intraregional freight systems with a focus on modal shift" selected as Editor's Featured Article by <em>Environmental Research Letters</em>.</span></li>
+<li><span class="award-year">2018</span><span>"Was it worthwhile? Where have the benefits of rooftop solar photovoltaic generation exceeded the cost?" selected as Editor's Featured Article and Highlight of 2017 by <em>Environmental Research Letters</em>.</span></li>
+<li><span class="award-year">2013</span><span>Third prize (team), USAEE Case Competition, 32nd North American Conference, Anchorage, AK.</span></li>
+<li><span class="award-year">2012</span><span>Second prize (team), USAEE Case Competition, 31st North American Conference, Austin, TX.</span></li>
+<li><span class="award-year">2011</span><span>Letter of commendation for outstanding performance in the MPhil, University of Cambridge.</span></li>
+<li><span class="award-year">2011</span><span>Hughes Hall Scholarship covering tuition fees for a PhD at the University of Cambridge. Only one student per year at Hughes Hall receives this award.</span></li>
+<li><span class="award-year">2009</span><span>Vice President's Award, Shell Energy Europe (SEE), for modeling the impact of the 2009 recession on European natural gas demand. Awarded to up to three people per quarter from SEE's ~500 staff.</span></li>
+<li><span class="award-year">2008</span><span>Vice President's Award, SEE, for work on identifying potential bottlenecks in Europe's gas transmission pipeline system.</span></li>
+<li><span class="award-year">1999</span><span>SIA-NOL Scholarship (Government of Singapore), covering all expenses for undergraduate studies at the National University of Singapore. Approximately 1% of applicants were successful.</span></li>
+<li><span class="award-year">1997</span><span>National Talent Search Scholarship, Government of India. Less than 1% of applicants were successful.</span></li>
+</ul>
+</section>
+<!-- SERVICE -->
+<section class="cv-section" id="service">
+<h2 class="section-heading">Service Activities</h2>
+<div class="service-group">
+<div class="service-group-title">External</div>
+<ul class="service-list">
+<li>Judge, Toyota Mobility Foundation, Sustainable Cities Challenge, Fall 2024–Spring 2026</li>
+<li>Grant reviewer: Nuclear Energy University Partnership (NEUP), Idaho National Lab, 2024 and 2025</li>
+<li>Grant reviewer: Maryland Industrial Partnerships Program, University of Maryland, 2025</li>
+<li>Grant reviewer: U.S. DOE Energy Efficiency and Renewable Energy, 2022</li>
+<li>Grant reviewer: Energy and Environment Program, Alfred P. Sloan Foundation, 2022</li>
+<li>Advisory board, Green Home Institute</li>
+<li>Chair, USAEE Case Competition (2016–2019) — led case writing, sponsorship, and judging</li>
+<li>Peer reviewer for Asian Development Bank study on Technological Transformation in Indonesia</li>
+<li>Co-wrote (with Prof. Eric Hittinger) the USAEE Case Competition problem (2015)</li>
+<li>Executive Editorial Board, <em>Environmental Research: Energy</em>, Institute of Physics</li>
+<li>Editorial Board, <em>Renewable and Sustainable Energy Transition</em>, Elsevier</li>
+<li>Ad-hoc reviewer: <em>Nature</em>, <em>Nature Energy</em>, <em>Nature Climate Change</em>, <em>Joule</em>, <em>PNAS</em>, <em>Environmental Research Letters</em>, <em>Energy Policy</em>, <em>Transportation Research Part C &amp; D</em>, <em>Energy Journal</em></li>
+</ul>
+</div>
+<div class="service-group">
+<div class="service-group-title">At the University of Michigan</div>
+<ul class="service-list">
+<li>Advisory Board Member, Water@Michigan, Fall 2025</li>
+<li>PhD Admissions Committee, Fall 2024/Winter 2025</li>
+<li>Search committee for Assistant Professor of Sustainable Finance, Summer 2024</li>
+<li>Search committee for Assistant Professor in the Sustainable Systems specialization, Winter 2023</li>
+</ul>
+</div>
+<div class="service-group">
+<div class="service-group-title">At Carnegie Mellon University</div>
+<ul class="service-list">
+<li>Graduate Student Ombudsperson, Department of Engineering &amp; Public Policy, Fall 2019–Fall 2020</li>
+<li>Graduate curriculum committee, 2018–2020</li>
+<li>Committee on culture and well-being, 2018–2020</li>
+<li>Part B qualifier committee, 2018</li>
+</ul>
+</div>
+</section>
+<!-- LANGUAGES -->
+<section class="cv-section" id="languages">
+<h2 class="section-heading">Languages</h2>
+<div class="lang-grid">
+<div class="lang-tag"><span class="lang-name">English</span><span class="lang-level">Native</span></div>
+<div class="lang-tag"><span class="lang-name">Hindi</span><span class="lang-level">Intermediate</span></div>
+<div class="lang-tag"><span class="lang-name">Gujarati</span><span class="lang-level">Intermediate</span></div>
+<div class="lang-tag"><span class="lang-name">German</span><span class="lang-level">Basic</span></div>
+<div class="lang-tag"><span class="lang-name">Marathi</span><span class="lang-level">Basic</span></div>
+</div>
+</section>
+</main>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('#sidebar nav a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + entry.target.id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Close sidebar on mobile when a link is clicked
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('sidebar').classList.remove('open');
+    });
+  });
+</script>
+<script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
+</body>
+</html>
