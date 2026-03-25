@@ -1462,42 +1462,21 @@
 <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
 
 <script>
-// ── GOOGLE SCHOLAR LIVE STATS ─────────────────────────────────────────────
-// Fetches h-index and i10-index from Google Scholar on each page load.
-// Uses allorigins.win as a CORS proxy since Scholar blocks direct browser requests.
+// ── GOOGLE SCHOLAR STATS ──────────────────────────────────────────────────
+// Reads from scholar_stats.json, which is updated daily by a GitHub Action.
+// This is robust: no scraping, no CORS issues, always fast.
 (function() {
-  const SCHOLAR_URL = 'https://scholar.google.com/citations?user=ZdSXW6QAAAAJ&hl=en';
-  const PROXY = 'https://api.allorigins.win/get?url=' + encodeURIComponent(SCHOLAR_URL);
-
-  function setStats(h, i10) {
-    const hEl = document.getElementById('hindex');
-    const iEl = document.getElementById('i10index');
-    if (hEl) hEl.textContent = h;
-    if (iEl) iEl.textContent = i10;
-  }
-
-  function setNote(msg) {
-    const el = document.getElementById('scholarNote');
-    if (el) el.textContent = msg;
-  }
-
-  fetch(PROXY)
-    .then(r => r.json())
+  fetch('scholar_stats.json?cb=' + Date.now())
+    .then(r => { if (!r.ok) throw new Error('not found'); return r.json(); })
     .then(data => {
-      const html = data.contents || '';
-      // Scholar renders stats in a table with id="gsc_rsb_st"
-      // Cells: All time: [citations, h-index, i10-index], Since YEAR: [...]
-      const matches = html.match(/gsc_rsb_std[^>]*>(\d+)/g);
-      if (matches && matches.length >= 2) {
-        // matches[0]=citations all, matches[1]=h all, matches[2]=i10 all
-        const nums = matches.map(m => m.match(/(\d+)$/)[1]);
-        setStats(nums[1], nums[2]);
-      } else {
-        setNote('(could not load)');
-      }
+      const hEl  = document.getElementById('hindex');
+      const iEl  = document.getElementById('i10index');
+      if (hEl && data.h_index   != null) hEl.textContent  = data.h_index;
+      if (iEl && data.i10_index != null) iEl.textContent = data.i10_index;
     })
     .catch(() => {
-      setNote('(could not load)');
+      const note = document.getElementById('scholarNote');
+      if (note) note.textContent = '(updating…)';
     });
 })();
 </script>
