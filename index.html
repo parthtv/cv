@@ -771,6 +771,55 @@
     display: block !important;
   }
 
+
+  /* ── GOOGLE SCHOLAR BAR ── */
+  .scholar-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .scholar-link {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .scholar-logo {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+  .scholar-stats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--text);
+  }
+  .scholar-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .scholar-label {
+    color: var(--muted, #6b7280);
+    font-weight: 500;
+  }
+  .scholar-value {
+    font-weight: 700;
+    color: var(--navy);
+    font-family: 'Source Code Pro', monospace;
+    font-size: 14px;
+  }
+  .scholar-sep {
+    color: var(--muted, #6b7280);
+  }
+  .scholar-fetch-note {
+    font-size: 11.5px;
+    color: var(--muted, #6b7280);
+    font-style: italic;
+  }
+
 </style>
 </head>
 <body>
@@ -869,7 +918,18 @@
 <section class="cv-section" id="publications">
 <h2 class="section-heading">Journal Articles Subject to Peer Review</h2>
 <p class="pub-note">In my group, it is standard practice to co-author with students and for students to assume first authorship. Student and postdoc co-authors are shown in <strong>bold</strong>.</p>
-<ol class="pub-list" reversed start="58" reversed="True" start="58">
+<p class="pub-note scholar-bar">
+  <a href="https://scholar.google.com/citations?user=ZdSXW6QAAAAJ" target="_blank" class="scholar-link" title="Google Scholar profile">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg" alt="Google Scholar" class="scholar-logo">
+  </a>
+  <span class="scholar-stats">
+    <span class="scholar-stat"><span class="scholar-label">h-index</span> <span class="scholar-value" id="hindex">—</span></span>
+    <span class="scholar-sep">·</span>
+    <span class="scholar-stat"><span class="scholar-label">i10-index</span> <span class="scholar-value" id="i10index">—</span></span>
+    <span class="scholar-fetch-note" id="scholarNote"></span>
+  </span>
+</p>
+<ol class="pub-list" reversed start="56" reversed="True" start="58">
 <li><span class="pub-text">Wu, H., <strong>Chen, J.</strong>, Vaishnav, P., Sun, M., Craig, M.T. (2026). Technological improvements in EV batteries offset climate-induced durability challenges. <span class="pub-journal">Nat. Clim. Chang.</span> 1–8. <a href="https://doi.org/10.1038/s41558-026-02579-z" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1038/s41558-026-02579-z" data-badge-popover="right" data-link-target="_blank"></div></span></li>
 <li><span class="pub-text">Joseph, J.M., Nock, D., Vaishnav, P., Samaras, C. (2026). Characterizing uncertainties in residential electrification: Financial feasibility, climate impacts, and health outcomes. <span class="pub-journal">Applied Energy</span> 411, 127636. <a href="https://doi.org/10.1016/j.apenergy.2026.127636" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.apenergy.2026.127636" data-badge-popover="right" data-link-target="_blank"></div></span></li>
 <li><span class="pub-text">Tomkins, S., Yin, S., Vaishnav, P., Stefanopoulou, A. (2025). Quantifying real and perceived barriers to EV adoption in rural Michigan. <span class="pub-journal">Sci Rep</span> 16, 2742. <a href="https://doi.org/10.1038/s41598-025-32478-w" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1038/s41598-025-32478-w" data-badge-popover="right" data-link-target="_blank"></div></span></li>
@@ -919,21 +979,19 @@
 <li><span class="pub-text">Hanus, N.L., Wong-Parodi, G., Darghouth, N.R., Vaishnav, P., Azevedo, I.L. (2019). Solar PV as a mitigation strategy for the U.S. education sector. <span class="pub-journal">Environmental Research Letters</span> 14, 044004. <a href="https://doi.org/10.1088/1748-9326/aafbcf" target="_blank">DOI</a></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/1748-9326/aafbcf" data-badge-popover="right" data-link-target="_blank"></div></span></li>
 <li><span class="pub-text"><strong>Kaack, L.H.</strong>, Vaishnav, P., Morgan, M.G., Azevedo, I.L., Rai, S. (2018). Decarbonizing intraregional freight systems with a focus on modal shift. <span class="pub-journal">Environmental Research Letters</span>, 13, 083001. <a href="https://doi.org/10.1088/1748-9326/aad56c" target="_blank">DOI</a> <em>— Editor's Featured Article.</em></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/1748-9326/aad56c" data-badge-popover="right" data-link-target="_blank"></div></span></li>
 <li><span class="pub-text">Vaishnav, P., Horner, N., Azevedo, I.L. (2017). Was it worthwhile? Where have the benefits of rooftop solar photovoltaic generation exceeded the cost? <span class="pub-journal">Environmental Research Letters <a href="https://doi.org/10.1088/1748-9326/aa815e" target="_blank">DOI</a></span>, 12, 094015. <em>— Editor's Featured Article and Highlight of 2017.</em></span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1088/1748-9326/aa815e" data-badge-popover="right" data-link-target="_blank"></div></span></li>
-<li><span class="pub-text">Morgan, M.G., Vaishnav, P., Dowlatabadi, H., Azevedo, I.L. (2017). Rethinking the Social Cost of Carbon. <span class="pub-journal">Issues in Science and Technology <a href="https://doi.org/10.17226/24836" target="_blank">DOI</a></span>, Summer 33(4): 43-50.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.17226/24836" data-badge-popover="right" data-link-target="_blank"></div></span></li>
 <li><span class="pub-text"><strong>Bonnín Roca, J.</strong>, Vaishnav, P., Morgan, M.G., Mendonça, J., Fuchs, E.R.H. (2017). When Risks Cannot Be Seen: Regulating Uncertainty in Emerging Technologies. <span class="pub-journal">Research Policy <a href="https://doi.org/10.1016/j.respol.2017.05.010" target="_blank">DOI</a></span> 46, no. 7: 1215-1233.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.respol.2017.05.010" data-badge-popover="right" data-link-target="_blank"></div></span></li>
 <li><span class="pub-text"><strong>Bonnín Roca, J.</strong>, Vaishnav, P., Mendonça, J., Morgan, M.G. (2017). Getting Past the Hype About 3-D Printing. <span class="pub-journal">MIT Sloan Management Review</span> 58, 57–62.</span></li>
 <li><span class="pub-text">Vaishnav, P. (2016). Design of a Global Market Based Measure — ICAO's Market Based Mechanism: Keep It Simple. <span class="pub-journal">Carbon &amp; Climate Law Review</span> 10, 120–126.</span></li>
 <li><span class="pub-text"><strong>Bonnín Roca, J.</strong>, Vaishnav, P., Fuchs, E.R.H., Morgan, M.G. (2016). Policy needed for additive manufacturing. <span class="pub-journal">Nature Materials <a href="https://doi.org/10.1038/nmat4658" target="_blank">DOI</a></span> 15, 815–818.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1038/nmat4658" data-badge-popover="right" data-link-target="_blank"></div></span></li>
 <li><span class="pub-text">Vaishnav, P., Petsonk, A., Avila, R.A.G., Morgan, M.G., Fischbeck, P.S. (2016). Analysis of a proposed mechanism for carbon-neutral growth in international aviation. <span class="pub-journal">Transportation Research Part D <a href="https://doi.org/10.1016/j.trd.2016.02.017" target="_blank">DOI</a></span> 45, 126–138.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1016/j.trd.2016.02.017" data-badge-popover="right" data-link-target="_blank"></div></span></li>
 <li><span class="pub-text">Vaishnav, P., Fischbeck, P.S., Morgan, M.G., Corbett, J.J. (2016). Shore Power for Vessels Calling at U.S. Ports: Benefits and Costs. <span class="pub-journal">Environmental Science &amp; Technology <a href="https://doi.org/10.1021/acs.est.5b04860" target="_blank">DOI</a></span> 50, no. 3: 1102–10.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.1021/acs.est.5b04860" data-badge-popover="right" data-link-target="_blank"></div></span></li>
-<li><span class="pub-text">Vaishnav, P. (2014). Greenhouse gas emissions from international transport. <span class="pub-journal">Issues in Science and Technology</span>, Winter 30(2): 25-28.</span></li>
 <li><span class="pub-text">Vaishnav, P. (2013). Costs and Benefits of Reducing Fuel Burn and Emissions from Taxiing Aircraft. <span class="pub-journal">Transportation Research Record <a href="https://doi.org/10.3141/2400-08" target="_blank">DOI</a></span> 2400: 65–77.</span><span class="altmetric-badge-wrap"><div class="altmetric-embed" data-badge-type="donut" data-doi="10.3141/2400-08" data-badge-popover="right" data-link-target="_blank"></div></span></li>
 </ol>
 </section>
 <!-- OTHER PUBLICATIONS -->
 <section class="cv-section" id="other-pubs">
 <h2 class="section-heading">Other Publications &amp; Writings</h2>
-<ol class="other-list" reversed start="16" reversed="True" start="16">
+<ol class="other-list" reversed start="18" reversed="True" start="18">
 <li>Fabe, P. et al. (2025). Forks to Filament — Exploring the Potential Viability of Post-Consumer TPLA in Additive Manufacturing. <em>ASME 2025 IDETC.</em> <a href="https://doi.org/10.1115/DETC2025-168771" target="_blank">DOI</a></li>
 <li>Chen, J., Keoleian, G., Vaishnav, P. (2025). Vehicle-to-home charging can cut costs and emissions. <em>Nat Energy</em> 10, 1400–1401. <a href="https://doi.org/10.1038/s41560-025-01899-2" target="_blank">DOI</a> [Invited policy brief]</li>
 <li>Manoj, A., Yin, S., Ahmed, O., Vaishnav, P., Stefanopoulou, A. and Tomkins, S. (2025). Lessons and Challenges from Crowd-Sourced Data in Rural Michigan to Assess EV Suitability. SAE Technical Paper No. 2025-01-8525.</li>
@@ -941,12 +999,14 @@
 <li>Vaishnav, P., Deetjen, T. (2021). Can running an air conditioner in reverse save the planet? <em>Niskanen Center.</em> <a href="https://www.niskanencenter.org/can-running-an-air-conditioner-in-reverse-save-the-planet/" target="_blank">Link</a></li>
 <li>Vaishnav, P., Morgan M., Baik, S., Larsen, P. (2019). Estimating the Value of Enhanced Electric Power Resilience: Case Study of Idaho National Laboratory and a Planned Small Modular Reactor. Report for U.S. DOE under LBNL Contract.</li>
 <li>Azevedo, I., Horner, N., Siler-Evans, K., Vaishnav, P. (2018). [DATASET] Electricity Marginal Factors Estimates. Carnegie Mellon University.</li>
+<li>Morgan, M.G., Vaishnav, P., Dowlatabadi, H., Azevedo, I.L. (2017). Rethinking the Social Cost of Carbon. <em>Issues in Science and Technology</em> <a href="https://doi.org/10.17226/24836" target="_blank">DOI</a>, Summer 33(4): 43-50.</li>
 <li>Vaishnav, P. (2016). Plug the Loopholes in ICAO's Plan. <em>Aviation Week &amp; Space Technology</em> 178, 66.</li>
 <li>Vaishnav, P., Morgan, M.G. (2016). Summary of a Workshop on Identifying and Avoiding Potential Dead Ends and Missed Opportunities in Climate Policy.</li>
 <li>Vaishnav, P., Abdulla, A. (2016). The Myth of Technology Neutral Regulation. <em>The Energy Collective.</em></li>
 <li>Bonnín Roca, J., Vaishnav, P., Fuchs, E.R.H., Morgan, M.G. (2015). Notes on a Workshop on Certification of Metal Additive Manufacturing Systems and Parts for Use in Civil Aviation.</li>
 <li>Branstetter, L., Horner, N., Morgan, M.G., Rubin, E., Vaishnav, P. (2015). Put Kids First, Not Gas Companies. <em>Pittsburgh Post-Gazette.</em> July 19.</li>
 <li>Vaishnav, P., Horner, N., Branstetter, L. (2015). Pennsylvania Needs and Can Afford a Shale Gas Severance Tax. <em>Pittsburgh Post-Gazette.</em> January 18.</li>
+<li>Vaishnav, P. (2014). Greenhouse gas emissions from international transport. <em>Issues in Science and Technology</em>, Winter 30(2): 25-28.</li>
 <li>Vaishnav, P. &amp; Horner, N. (2014). Apocalypse Not: Severance Taxes and Industry Exit in the Marcellus Shale. <em>Pennsylvania Budget and Policy Center Briefing Paper.</em></li>
 <li>Vaishnav, P. (2013). ICAO Deal to (Eventually) Reduce Greenhouse Gas Emissions from Aviation a Good First Step. <em>The Energy Collective.</em></li>
 <li>Vaishnav, P. (2011). Innovation for Emerging Markets: Novel Business Models to Supply Energy to the Rural Poor. Dissertation (M.Phil.), University of Cambridge.</li>
@@ -1253,7 +1313,7 @@
 <div class="grant-entry">
 <div class="grant-title">Realizing the full value of flexible electric heating</div>
 <div class="grant-amount">$150k / $300k</div>
-<div class="grant-pi">PI: Parth Vaishnav (CMU)  ·  Co-PI: Lucy Qiu (UMD)  ·  Funder: Alfred P. Sloan Foundation</div>
+<div class="grant-pi">PI: Lucy Qiu (UMD)  ·  Co-PI: Parth Vaishnav (CMU)  ·  Funder: Alfred P. Sloan Foundation</div>
 <div class="grant-duration">Apr 2019 – Apr 2021</div>
 </div>
 <div class="grant-entry">
@@ -1400,5 +1460,47 @@
   });
 </script>
 <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
+
+<script>
+// ── GOOGLE SCHOLAR LIVE STATS ─────────────────────────────────────────────
+// Fetches h-index and i10-index from Google Scholar on each page load.
+// Uses allorigins.win as a CORS proxy since Scholar blocks direct browser requests.
+(function() {
+  const SCHOLAR_URL = 'https://scholar.google.com/citations?user=ZdSXW6QAAAAJ&hl=en';
+  const PROXY = 'https://api.allorigins.win/get?url=' + encodeURIComponent(SCHOLAR_URL);
+
+  function setStats(h, i10) {
+    const hEl = document.getElementById('hindex');
+    const iEl = document.getElementById('i10index');
+    if (hEl) hEl.textContent = h;
+    if (iEl) iEl.textContent = i10;
+  }
+
+  function setNote(msg) {
+    const el = document.getElementById('scholarNote');
+    if (el) el.textContent = msg;
+  }
+
+  fetch(PROXY)
+    .then(r => r.json())
+    .then(data => {
+      const html = data.contents || '';
+      // Scholar renders stats in a table with id="gsc_rsb_st"
+      // Cells: All time: [citations, h-index, i10-index], Since YEAR: [...]
+      const matches = html.match(/gsc_rsb_std[^>]*>(\d+)/g);
+      if (matches && matches.length >= 2) {
+        // matches[0]=citations all, matches[1]=h all, matches[2]=i10 all
+        const nums = matches.map(m => m.match(/(\d+)$/)[1]);
+        setStats(nums[1], nums[2]);
+      } else {
+        setNote('(could not load)');
+      }
+    })
+    .catch(() => {
+      setNote('(could not load)');
+    });
+})();
+</script>
+
 </body>
 </html>
