@@ -1,0 +1,50 @@
+name: Update Scholar Stats
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # runs daily at 6am UTC
+  workflow_dispatch:        # allows manual trigger from GitHub Actions tab
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch Google Scholar stats
+        run: |
+          python3 - <<PYEOF
+          import urllib.request, re, json, os
+
+          url = "https://scholar.google.com/citations?user=ZdSXW6QAAAAJ&hl=en"
+          req = urllib.request.Request(url, headers={
+            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+                          "(KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+          })
+          html = urllib.request.urlopen(req, timeout=15).read().decode("utf-8")
+
+          # Scholar stats table: citations, h-index, i10-index (all time / since year)
+          nums = re.findall(r'gsc_rsb_std">(\d+)', html)
+          if len(nums) >= 3:
+            stats = {"h_index": int(nums[1]), "i10_index": int(nums[2]), "citations": int(nums[0])}
+          else:
+            # fallback: try to read existing file and keep old values
+            try:
+              with open("scholar_stats.json") as f:
+                stats = json.load(f)
+              stats["fetch_error"] = "parse failed"
+            except:
+              stats = {"h_index": None, "i10_index": None, "citations": None, "fetch_error": "parse failed"}
+
+          with open("scholar_stats.json", "w") as f:
+            json.dump(stats, f)
+          print("Stats:", stats)
+          PYEOF
+
+      - name: Commit updated stats
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scholar_stats.json
+          git diff --cached --quiet || git commit -m "chore: update scholar stats"
+          git push
